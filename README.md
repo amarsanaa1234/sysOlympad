@@ -1,1 +1,1 @@
-# syscotech.landing
+# syscotech.olympiad
