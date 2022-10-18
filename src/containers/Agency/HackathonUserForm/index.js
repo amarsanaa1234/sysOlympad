@@ -155,10 +155,12 @@ const HackathonUsersSchema = Yup.object().shape({
         }
         return false;
       }
-      return true;
+      return false;
     }
   ),
 });
+
+////////////////////this
 
 const HackathonUserForm = ({
   row,
