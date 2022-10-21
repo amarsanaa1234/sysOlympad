@@ -14,140 +14,6 @@ import axios from "axios";
 import Alert from "common/components/Alert";
 
 const HackathonTeamSchema = Yup.object().shape({
-  name: Yup.string()
-    .min(2, "Багийн нэрээ оруулна уу!")
-    .required("Багийн нэрээ оруулна уу!"),
-  email: Yup.string()
-    .email("И-мэйл хаяг буруу байна!")
-    .required("Заавал оруулах"),
-  phoneNumber: Yup.number()
-    .min(8, "Утасны дугаар аа зөв оруулан уу")
-    .required("Утасны дугаар хоосон байна"),
-  subSchoolName: Yup.string().test(
-    "sub-school",
-    "Суралцаж буй сургуулийн нэрийг бичнэ үү!",
-    (value, data) => {
-      const {
-        parent: { schoolName },
-      } = data;
-
-      if (schoolName === "Бусад") {
-        if (value && value.length > 1) {
-          return true;
-        }
-        return false;
-      }
-      return true;
-    }
-  ),
-});
-
-///////////////////+++++++++++++++++
-const schoolValidation = (schoolName, value) => {
-  switch (schoolName) {
-    case "ШУТИС":
-      // B180930008
-      return /^[Bb]{1}[1-2]{1}[0-9]{8}$/.test(value);
-    case "СЭЗИС":
-      // b20fc1106
-      return /^[a-zA-Z]{1}[1-2]{1}[0-9]{1}[a-zA-Z]{1}[a-zA-Z]{1}[0-9]{4}$/.test(
-        value
-      );
-    case "МУИС":
-      // 21b1num0595
-      return /^[0-9]{2}[a-zA-Z]{1}[0-9]{1}[a-zA-Z]{1}[a-zA-Z]{1}[a-zA-Z]{1}[0-9]{4}$/.test(
-        value
-      );
-    case "ХУИС":
-      // SE19D011
-      return /^[a-zA-Z]{1}[a-zA-Z]{1}[1-2]{1}[0-9]{1}[a-zA-Z]{1}[0-9]{3}$/.test(
-        value
-      );
-    case "МУБИС":
-      // E.PT20D141
-      return /^[a-zA-Z]{1}[.]{1}[a-zA-Z]{1}[a-zA-Z]{1}[0-9]{2}[a-zA-Z]{1}[0-9]{3}$/.test(
-        value
-      );
-    case "ИЗОИС":
-      // ET21B178
-      return /^[a-zA-Z]{1}[a-zA-Z]{1}[1-2]{1}[0-9]{1}[a-zA-Z]{1}[0-9]{3}$/.test(
-        value
-      );
-    case "Этүгэн их сургууль":
-      // MMS19D123
-      return /^[a-zA-Z]{2}[a-zA-Z]{1}[1-2]{1}[0-9]{1}[a-zA-Z]{1}[0-9]{3}$/.test(
-        value
-      );
-    case "Мандах их сургууль":
-      // M.AB16D
-      return /^[a-zA-Z]{1}[.]{1}[a-zA-Z]{1}[a-zA-Z]{1}[0-9]{2}[a-zA-Z]{1}$/.test(
-        value
-      );
-    case "МҮИС":
-      // d12345678
-      return /^[a-zA-Z]{1}[0-9]{8}$/.test(value);
-    case "Шинэ Монгол ТДС":
-      //A.AR10D725
-      return /^[a-zA-Z]{1}[.]{1}[a-zA-Z]{1}[a-zA-Z]{1}[0-9]{2}[a-zA-Z]{1}[0-9]{3}$/.test(
-        value
-      );
-    case "Чингис-Соосэ":
-      //SO21B026
-      return /^[a-zA-Z]{1}[a-zA-Z]{1}[0-9]{2}[a-zA-Z]{1}[0-9]{3}$/.test(value);
-    case "ХААИС":
-      //3520008
-      return /^[0-9]{7}$/.test(value);
-    case "Letu University":
-      //18121
-      return /^[0-9]{5}$/.test(value);
-    case "Улаанбаатар их сургууль":
-      //ID21D001
-      return /^[a-zA-Z]{1}[a-zA-Z]{1}[1-2]{1}[0-9]{1}[a-zA-Z]{1}[0-9]{3}$/.test(
-        value
-      );
-    default:
-      return value ? value.length > 2 : false;
-  }
-};
-
-const checkStudentCode = (data, id) => {
-  const formData = data;
-  const isSubmit = formData.isSubmit;
-  toast.promise(
-    axios.post(
-      "https://syscotech-api.herokuapp.com/api/v1/hackathonusers/check",
-      data,
-      {
-        headers: {
-          "Access-Control-Allow-Headers": "*",
-        },
-      }
-    ),
-    {
-      pending: `Оролцогч #${id} мэдээллийг шалгаж байна... `,
-      success: {
-        render(data) {
-          if (isSubmit) {
-            setLastUser(false);
-          }
-          const index = rolesData.indexOf(formData.role);
-          rolesData.splice(index, 1);
-          setRolesData([...rolesData]);
-          forms.push(formData);
-          setForms([...forms]);
-          return `Оролцогч ${id}-ийг бүртгэх боломжтой.`;
-        },
-      },
-      error: {
-        render(data) {
-          return `${formData.studentCode} оюутны код бүртгэлтэй байна.!!!`;
-        },
-      },
-    }
-  );
-};
-/////////////////////////////////////////+++
-const HackathonUsersSchema = Yup.object().shape({
   firstname: Yup.string()
     .min(2, "Оролцогчийн нэрээ оруулна уу!")
     .required("Оролцогчийн нэрээ оруулна уу!"),
@@ -162,17 +28,16 @@ const HackathonUsersSchema = Yup.object().shape({
       } = data;
       return schoolValidation(schoolName, value);
     }),
+  class: Yup.string()
+    .min(2, "Суралцаж буй мэргэжил ээ бичнэ үү!!")
+    .required("Заавал оруулах"),
+  course: Yup.string().required("Заавал оруулах"),
   email: Yup.string()
     .email("И-мэйл хаяг буруу байна!")
     .required("Заавал оруулах"),
   phoneNumber: Yup.number()
     .min(8, "Утасны дугаар аа зөв оруулан уу")
     .required("Утасны дугаар хоосон байна"),
-  class: Yup.string()
-    .min(2, "Суралцаж буй мэргэжил ээ бичнэ үү!!")
-    .required("Заавал оруулах"),
-  course: Yup.string().required("Заавал оруулах"),
-  role: Yup.string().required("Заавал оруулах"),
   subSchoolName: Yup.string().test(
     "sub-school",
     "Суралцаж буй сургуулийн нэрийг бичнэ үү!",
@@ -181,12 +46,12 @@ const HackathonUsersSchema = Yup.object().shape({
         parent: { schoolName },
       } = data;
 
-      if (schoolName === "Бусад") {
-        if (value && value.length > 1) {
-          return true;
-        }
-        return false;
-      }
+      // if (schoolName === "Бусад") {
+      //   if (value && value.length > 1) {
+      //     return true;
+      //   }
+      //   return false;
+      // }
       return true;
     }
   ),
@@ -310,12 +175,24 @@ export const FormComponent = ({
   );
 };
 
-const schoolData = [
-  "ШУТИС",
-  "МУИС",
-];
+const schoolData = ["ШУТИС", "МУИС"];
 
 const courseList = ["1", "2", "3"];
+
+const schoolValidation = (schoolName, value) => {
+  switch (schoolName) {
+    case "ШУТИС":
+      // B180930008
+      return /^[Bb]{1}[1-2]{1}[0-9]{8}$/.test(value);
+    case "МУИС":
+      // 21b1num0595
+      return /^[0-9]{2}[a-zA-Z]{1}[0-9]{1}[a-zA-Z]{1}[a-zA-Z]{1}[a-zA-Z]{1}[0-9]{4}$/.test(
+        value
+      );
+    default:
+      return value ? value.length > 2 : false;
+  }
+};
 
 const HackathonTeam = ({
   row,
@@ -324,33 +201,42 @@ const HackathonTeam = ({
   contentWrapper,
   validTeam,
   setValidTeam,
-  registerSuccess,
+  registerSuccess = false,
+  setRegisterSuceess,
 }) => {
-  // const initialValues = {
-  //   name: "",
-  //   email: "",
-  //   phoneNumber: "",
-  //   schoolName: schoolData[0],
-  //   subSchoolName: "",
-  // };
   const initialValues = {
-    name: "",
     firstname: "",
-    lastname: "",
-    studentCode: "",
     email: "",
     phoneNumber: "",
+    schoolName: schoolData[0],
+    subSchoolName: "",
     class: "",
     course: courseList[0],
-    schoolName: schoolData[0],
-    // role: rolesData[0],
-    subSchoolName: "",
-    isSubmit: false,
+    studentCode: "",
+    lastname: "",
   };
 
-  // const submitBtnDisaled = forms.length >= 2;
+  const createUserForm = async () => {
+    const data = await localStorage.getItem("hackathonTeam");
+    const hackathonTeam = JSON.parse(data);
 
-  const SignupButtonGroup = () => (
+    if (!hackathonTeam) {
+      toast.warn("Багийн мэдээлэл олдсонгүй !!", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+
+    setRegisterSuceess(true);
+    await teamRegister(hackathonTeam);
+  };
+
+  const SignupButtonGroup = ({ setFieldValue }) => (
     <Fragment>
       <Button
         type="submit"
@@ -359,20 +245,66 @@ const HackathonTeam = ({
         {...btnStyle}
         style={{ borderRadius: 5 }}
       />
-       <Button
-            type="submit"
-            className="default"
-            title="Бүртгүүлэх"
-            // disabled={!submitBtnDisaled}
-            style={{
-              // backgroundColor: !submitBtnDisaled ? "grey" : "green",
-              borderRadius: 5,
-            }}
-            {...btnStyle}
-            // onClick={createUserForm}
-          />
+
+      <Button
+        type="submit"
+        className="default"
+        title="Бүртгүүлэх"
+        // disabled={!submitBtnDisaled}
+        // style={{
+        //   backgroundColor: !submitBtnDisaled ? "grey" : "green",
+        //   borderRadius: 5,
+        // }}
+        {...btnStyle}
+        onClick={createUserForm}
+      />
+
+      <Button
+        type="submit"
+        className="default"
+        title="Бүртгүүлэх"
+        // disabled={!submitBtnDisaled}
+        // style={{
+        //   marginLeft: 30,
+        //   backgroundColor: !submitBtnDisaled ? "grey" : "green",
+        //   borderRadius: 5,
+        // }}
+        {...btnStyle}
+        onClick={() => {
+          setFieldValue("isSubmit", true);
+        }}
+      />
     </Fragment>
   );
+
+  const teamRegister = async (data) => {
+    toast.promise(
+      axios.post(
+        "https://syscotech-api.herokuapp.com/api/v1/hackathons/6255f6fbbaf0fa4aebde4072/teams",
+        data,
+        {
+          headers: {
+            "Access-Control-Allow-Headers": "*",
+          },
+        }
+      ),
+      {
+        pending: "Багийн бүртгэл хийгдэж байна... ",
+        success: {
+          render(data) {
+            const requestData = data.data.data;
+            promises(requestData.data.id);
+            return `Амжилттай бүртгэгдлээ. `;
+          },
+        },
+        error: {
+          render(data) {
+            return `Бүртгэх үед алдаа гарлаа. `;
+          },
+        },
+      }
+    );
+  };
 
   const checkTeamName = (data) => {
     const formData = data;
@@ -404,6 +336,43 @@ const HackathonTeam = ({
     );
   };
 
+  // const checkStudentCode = (data, id) => {
+  //   const formData = data;
+  //   const isSubmit = formData.isSubmit;
+  //   toast.promise(
+  //     axios.post(
+  //       "https://syscotech-api.herokuapp.com/api/v1/hackathonusers/check",
+  //       data,
+  //       {
+  //         headers: {
+  //           "Access-Control-Allow-Headers": "*",
+  //         },
+  //       }
+  //     ),
+  //     {
+  //       pending: `Оролцогч #${id} мэдээллийг шалгаж байна... `,
+  //       success: {
+  //         render(data) {
+  //           if (isSubmit) {
+  //             setLastUser(false);
+  //           }
+  //           const index = rolesData.indexOf(formData.role);
+  //           rolesData.splice(index, 1);
+  //           setRolesData([...rolesData]);
+  //           forms.push(formData);
+  //           setForms([...forms]);
+  //           return `Оролцогч ${id}-ийг бүртгэх боломжтой.`;
+  //         },
+  //       },
+  //       error: {
+  //         render(data) {
+  //           return `${formData.studentCode} оюутны код бүртгэлтэй байна.!!!`;
+  //         },
+  //       },
+  //     }
+  //   );
+  // };
+
   const registerHackathonTeam = async (data) => {
     if (data.schoolName === "Бусад") {
       data.schoolName = data.subSchoolName;
@@ -416,7 +385,7 @@ const HackathonTeam = ({
     <LoginModalWrapper>
       <Formik
         initialValues={initialValues}
-        validationSchema={HackathonUsersSchema}
+        validationSchema={HackathonTeamSchema}
         onSubmit={(values) => registerHackathonTeam(values)}
       >
         {({ values, errors, touched, handleChange, handleSubmit }) => (
@@ -453,16 +422,6 @@ const HackathonTeam = ({
               <Box className="row" {...row}>
                 <Box className="col" {...col}>
                   <Box className="formComponent">
-                    {/* <Space />
-                    <FormComponent
-                      label="Багийн нэр:"
-                      name="name"
-                      value={values.name}
-                      onChange={handleChange}
-                      error={errors.name && touched.name}
-                      errorMsg={errors.name}
-                      disabled={validTeam}
-                    /> */}
                     <Space />
                     <FormComponent
                       name="firstname"
@@ -473,42 +432,8 @@ const HackathonTeam = ({
                       errorMsg={errors.firstname}
                       disabled={validTeam}
                     />
-                    <Space />
-                     <FormComponent
-                      name="lastname"
-                      value={values.lastname}
-                      label="Оролцогчийн овог: "
-                      onChange={handleChange}
-                      error={errors.lastname && touched.lastname}
-                      errorMsg={errors.lastname}
-                      disabled={validTeam}
-                    />
-                    <Space />
-                      <FormComponent
-                        label="Сургуулийн нэр:"
-                        name="schoolName"
-                        value={values.schoolName}
-                        onChange={handleChange}
-                        error={errors.schoolName && touched.schoolName}
-                        errorMsg={errors.schoolName}
-                        contentType="select"
-                        disabled={validTeam}
-                        options={schoolData}
-                      />
-                      <Space />
-                       <FormComponent
-                        name="course"
-                        value={values.course}
-                        label="Курс: "
-                        onChange={handleChange}
-                        error={errors.course && touched.course}
-                        errorMsg={errors.course}
-                        disabled={validTeam}
-                        options={courseList}
-                        contentType="select"
-                      />
-                    <Space />
-                    {/* <FormComponent
+                    {/* <Space />
+                    <FormComponent
                       label="Сургуулийн нэр:"
                       name="schoolName"
                       value={values.schoolName}
@@ -520,7 +445,7 @@ const HackathonTeam = ({
                       options={schoolData}
                     /> */}
                     <Space />
-                    {values.schoolName === "Бусад" && (
+                    {/* {values.schoolName === "Бусад" && (
                       <>
                         <FormComponent
                           label="Суралцаж буй сургууль:"
@@ -533,7 +458,7 @@ const HackathonTeam = ({
                         />
                         <Space />
                       </>
-                    )}
+                    )} */}
                   </Box>
                 </Box>
                 <Box className="col" {...col}>
@@ -561,16 +486,46 @@ const HackathonTeam = ({
                       disabled={validTeam}
                     />
                     <Space />
-                       <FormComponent
-                        name="studentCode"
-                        value={values.studentCode}
-                        label="Оюутны код: "
-                        onChange={handleChange}
-                        error={errors.studentCode && touched.studentCode}
-                        errorMsg={errors.studentCode}
-                        disabled={validTeam}
-                      />
+                    <FormComponent
+                      name="class"
+                      value={values.class}
+                      label="Ямар мэргэжлээр суралцдаг вэ:"
+                      onChange={handleChange}
+                      error={errors.class && touched.class}
+                      errorMsg={errors.class}
+                      disabled={validTeam}
+                    />
                     <Space />
+                    <FormComponent
+                      name="course"
+                      value={values.course}
+                      label="Курс: "
+                      onChange={handleChange}
+                      error={errors.course && touched.course}
+                      errorMsg={errors.course}
+                      disabled={validTeam}
+                      options={courseList}
+                      contentType="select"
+                    />
+                    <FormComponent
+                      name="studentCode"
+                      value={values.studentCode}
+                      label="Оюутны код: "
+                      onChange={handleChange}
+                      error={errors.studentCode && touched.studentCode}
+                      errorMsg={errors.studentCode}
+                      disabled={validTeam}
+                    />
+                    <Space />
+                    <FormComponent
+                      name="lastname"
+                      value={values.lastname}
+                      label="Оролцогчийн овог: "
+                      onChange={handleChange}
+                      error={errors.lastname && touched.lastname}
+                      errorMsg={errors.lastname}
+                      disabled={validTeam}
+                    />
                   </Box>
                 </Box>
               </Box>

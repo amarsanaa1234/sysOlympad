@@ -61,7 +61,7 @@ const Main = () => {
           <FeatureSection />
           <WorkHistory />
           <UpdateScreen endTime={endTime} />
-          <LoginModal />
+          {/* <LoginModal /> */}
           <Bvrtgel/>
           {/* <Investment/> */}
           <Privacy />

@@ -155,7 +155,7 @@ const HackathonUsersSchema = Yup.object().shape({
         }
         return false;
       }
-      return false;
+      return true;
     }
   ),
 });
@@ -362,7 +362,7 @@ const HackathonUserForm = ({
       <Button
         type="submit"
         className="default"
-        title="Бүртгүүлэх"
+        title="Бүртгүүлэхss"
         disabled={!submitBtnDisaled}
         style={{
           marginLeft: 30,
