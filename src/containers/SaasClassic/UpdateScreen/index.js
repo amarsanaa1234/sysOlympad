@@ -45,10 +45,10 @@ const UpdateScreen = ({ secTitleWrapper, secText, secHeading, endTime }) => {
       <ParticlesComponent />
       <Container>
         <Box {...secTitleWrapper}>
-          <Text {...secText} content="Sys&CoTech club" />
+          <Text {...secText} content={<div style={{fontFamily: "Georgia", fontSize: "25px", color: "#fff"}}>Sys&CoTech club</div>} />
           <Heading
             {...secHeading}
-            content={`"Dev Hackathon Student - 2022" бүртгүүлэх`}
+            content={<div style={{fontFamily: "MulishBold", color: "#00FF00"}}>"Програмчлалын Олимпиад - 2022" бүртгүүлэх</div>}
           />
         </Box>
         <Tabs

@@ -8,7 +8,7 @@ import Logo from 'common/components/UIElements/Logo';
 import Container from 'common/components/UI/Container';
 import FooterWrapper, { List, ListItem } from './footer.style';
 
-import LogoImage from 'common/assets/image/cryptoModern/logo-white.png';
+import LogoImage from 'common/assets/image/cryptoModern/client_logo/syscoLogo.png';
 
 import { Footer_Data } from 'common/data/CryptoModern';
 
@@ -35,7 +35,7 @@ const Footer = ({
             <Text content="ШУТИС-МХТС 400 тоот" {...textStyle} />
             <Text content="+976 8655 0963" {...textStyle} />
             <br />
-              <p style={{color: '#fff'}}>©2022 Made by Sys&CoTech Club ❤️</p>
+              <p style={{fontFamily: "MulishBold",color: '#fff', fontSize: '17px'}}>©2022 Made by Sys&CoTech Club ❤️</p>
           </Box>
           {/* End of footer logo column */}
           <Box {...colTwo}>

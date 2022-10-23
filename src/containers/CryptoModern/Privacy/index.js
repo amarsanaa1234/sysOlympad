@@ -13,8 +13,8 @@ const PrivacyPortal = () => {
       <Container>
         <ContentWrapper>
           <div className="content">
-            <Heading content="Privacy Preserving  Anonymous Funds  Protocol" />
-            <Text content="Lorem ipsum dolor sit amet consectetur adipisicing elit sed eiu Lorem ipsum dolor sit amet consectetur adipisicing elit sed eiu" />
+            <Heading content={<div style={{fontFamily: 'MulishBold'}}>Програмчлалын олимпиад - 2021</div>} />
+            <Text content="Шагналт байрнанд шалгарсан оюутнууд" />
           </div>
           <div className="image">
             <Fade up>

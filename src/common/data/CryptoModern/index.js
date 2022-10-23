@@ -1,7 +1,7 @@
 /* ------------------------------------ */
 // Navbar data section
 /* ------------------------------------ */
-import logo from 'common/assets/image/cryptoModern/client_logo/Modern_Sys&CoLogo.png';
+import logo from 'common/assets/image/cryptoModern/client_logo/syscoLogo.png';
 
 export const navbar = {
   logo: logo,
@@ -19,18 +19,6 @@ export const navbar = {
       offset: '81',
     },
     {
-      id: 3,
-      label: '?',
-      path: '#fund',
-      offset: '81',
-    },
-    {
-      id: 4,
-      label: '?',
-      path: '#map',
-      offset: '81',
-    },
-    {
       id: 5,
       label: 'Түгээмэл асуултууд',
       path: '#faqSection',
@@ -42,39 +30,37 @@ export const navbar = {
 /* ------------------------------------ */
 // Features data section
 /* ------------------------------------ */
-import featureIcon1 from 'common/assets/image/cryptoModern/feature-1.png';
-import featureIcon2 from 'common/assets/image/cryptoModern/feature-2.png';
-import featureIcon3 from 'common/assets/image/cryptoModern/feature-3.png';
-import featureIcon4 from 'common/assets/image/cryptoModern/feature-4.png';
+import featureIcon1 from 'common/assets/image/cryptoModern/callPro.png';
+import featureIcon2 from 'common/assets/image/cryptoModern/lime.png';
 
 export const Features = [
   {
     id: 1,
     icon: featureIcon1,
-    title: 'Great Market Value',
+    title: 'Call Pro',
     description:
-      'The leading digital currency by market capitalization, has grown in value by more than 10 times.',
+      `КоллПро ХХК нь 2009 оноос хойш харилцаа холбооны салбарт олон төрлийн дэвшилтэт технологи үйлчилгээг нэвтрүүлэн ажиллаж байна.`,
   },
   {
     id: 2,
+    icon: featureIcon2,
+    title: 'Lime',
+    description:
+      'Your mining rigs are already set up and running. As soon as you set up your account.',
+  },
+  {
+    id: 3,
     icon: featureIcon2,
     title: 'Verified Mining',
     description:
       'Your mining rigs are already set up and running. As soon as you set up your account.',
   },
   {
-    id: 3,
-    icon: featureIcon3,
-    title: 'Fastest Miner',
-    description:
-      'Don’t wrestle with rig assembly and hot, noisy miners at home. We have the fastest bitcoin mining.',
-  },
-  {
     id: 4,
-    icon: featureIcon4,
-    title: 'Secure Transactions',
+    icon: featureIcon2,
+    title: 'Verified Mining',
     description:
-      'You can mine any cryptocurrency available in our catalogue! Switch your mining power.',
+      'Your mining rigs are already set up and running. As soon as you set up your account.',
   },
 ];
 
@@ -140,7 +126,7 @@ export const Faq = [
 /* ------------------------------------ */
 export const Footer_Data = [
   {
-    title: 'Бидэнтэй холбогдох',
+    title: <div style={{fontFamily: "MulishBold", fontSize: "20px"}}>Бидэнтэй холбогдох</div>,
     menuItems: [
       {
         url: 'https://www.facebook.com/SysAndCoTech',
@@ -158,7 +144,7 @@ export const Footer_Data = [
   },
   {
     id: 2,
-    title: 'Мэдээлэл',
+    title: <div style={{fontFamily: "MulishBold", fontSize: "20px"}}>Мэдээлэл</div>,
     menuItems: [
       {
         id: 1,
@@ -174,7 +160,7 @@ export const Footer_Data = [
   },
   {
     id: 3,
-    title: 'Клубийн бодлого',
+    title: <div style={{fontFamily: "MulishBold", fontSize: "20px"}}>Клубийн бодлого</div>,
     menuItems: [
       {
         id: 1,

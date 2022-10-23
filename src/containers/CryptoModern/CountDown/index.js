@@ -84,7 +84,7 @@ const CountDownSection = ({ deadline, endTime }) => {
             <Fade up>
               <Heading
                 as="h1"
-                content={`"Програмчлалын Олимпиад - 2022 бүртгэл хаагдахад"`}
+                content={<div style={{color: "#fff", fontFamily: "MulishBold"}}>Програмчлалын Олимпиад - 2022 бүртгэл хаагдахад</div>}
               />
               {/* <Text content={slogan} /> */}
             </Fade>

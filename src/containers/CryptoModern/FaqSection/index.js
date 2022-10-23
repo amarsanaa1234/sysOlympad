@@ -31,7 +31,7 @@ const FaqSection = ({
     <FaqSectionWrapper id="faqSection">
       <Container>
         <Box {...sectionHeader} className="sectionHeader">
-          <Text content="Түгээмэл асуултууд" {...sectionSubTitle} />
+          <Text content={<div style={{fontFamily: "MulishBold"}}>Түгээмэл асуултууд</div>} {...sectionSubTitle} />
           {/* <Heading
             content="Lorem ipsum dolor sit amet consectetur adipisicing elit sed eiu Lorem ipsum dolor Lorem ipsum dolor"
             {...sectionTitle}

@@ -360,7 +360,7 @@ const HackathonUserForm = ({
       <Button
         type="submit"
         className="default"
-        title="Бүртгүүлэхss"
+        title="Бүртгүүлэх"
         disabled={!submitBtnDisaled}
         style={{
           marginLeft: 30,

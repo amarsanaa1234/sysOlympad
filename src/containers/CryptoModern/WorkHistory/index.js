@@ -25,7 +25,7 @@ const WorkHistory = ({ row, col, cardStyle, btnStyle }) => {
               <Card className="card" {...cardStyle}>
                 <NextImage src={shape1} alt="Shape 1" />
                 <h3>
-                  <CountUp start={0} end={75000} />+
+                  <CountUp start={0} end={250000} />+
                 </h3>
                 <Text content="Awards" />
               </Card>
@@ -54,7 +54,7 @@ const WorkHistory = ({ row, col, cardStyle, btnStyle }) => {
           </Box>
           <Box className="col" {...col}>
             <FeatureBlock
-              title={<Heading content="Шагналын сан" />}
+              title={<Heading content={<div style={{fontFamily: 'MulishBold'}}>Шагналын сан</div>} />}
               description={
                 <Text content="We have worked with some leading agencies around the globe and their appreciation is our main strength. In the modern cryptocurrency era, customer satisfaction is our main criteria. " />
               }

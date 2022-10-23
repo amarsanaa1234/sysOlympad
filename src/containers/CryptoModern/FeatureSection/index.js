@@ -24,9 +24,9 @@ const FeatureSection = ({
     <FeatureSectionWrapper id="key-features">
       <Container>
         <Box {...sectionHeader} className="sectionHeader">
-          <Text content="Ивээн тэтгэгч" {...sectionSubTitle} />
+          <Text content={<div style={{fontFamily: "MulishBold"}}>Ивээн тэтгэгч</div>} {...sectionSubTitle} />
           <Heading
-            content={`Sys&CoTech клубээс зохион байгуулж буй "Програмчлалын Олимпиад - 2022" тэмцээний ивээн тэтгэгч байгууллагууд`}
+            content={<div style={{fontFamily: "MulishBold"}}>Sys&CoTech клубээс зохион байгуулж буй "Програмчлалын Олимпиад - 2022" тэмцээний ивээн тэтгэгч байгууллагууд</div>}
             {...sectionTitle}
           />
         </Box>
