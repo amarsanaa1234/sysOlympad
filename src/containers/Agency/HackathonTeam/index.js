@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import Box from "common/components/Box";
@@ -12,6 +12,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import Alert from "common/components/Alert";
+// import axios from "../../Agency/axios-orders"
 
 const HackathonTeamSchema = Yup.object().shape({
   firstname: Yup.string()
@@ -38,23 +39,6 @@ const HackathonTeamSchema = Yup.object().shape({
   phoneNumber: Yup.number()
     .min(8, "Утасны дугаар аа зөв оруулан уу")
     .required("Утасны дугаар хоосон байна"),
-  subSchoolName: Yup.string().test(
-    "sub-school",
-    "Суралцаж буй сургуулийн нэрийг бичнэ үү!",
-    (value, data) => {
-      const {
-        parent: { schoolName },
-      } = data;
-
-      // if (schoolName === "Бусад") {
-      //   if (value && value.length > 1) {
-      //     return true;
-      //   }
-      //   return false;
-      // }
-      return true;
-    }
-  ),
 });
 
 export const Space = styled.div`
@@ -201,7 +185,7 @@ const HackathonTeam = ({
   contentWrapper,
   validTeam,
   setValidTeam,
-  registerSuccess = false,
+  registerSuccess,
   setRegisterSuceess,
 }) => {
   const initialValues = {
@@ -209,17 +193,19 @@ const HackathonTeam = ({
     email: "",
     phoneNumber: "",
     schoolName: schoolData[0],
-    subSchoolName: "",
     class: "",
     course: courseList[0],
     studentCode: "",
     lastname: "",
   };
 
+  const [forms, setForms] = useState([]);
+
+  // console.log('createUserForm',createUserForm)
   const createUserForm = async () => {
     const data = await localStorage.getItem("hackathonTeam");
     const hackathonTeam = JSON.parse(data);
-
+    console.log("data", data);
     if (!hackathonTeam) {
       toast.warn("Багийн мэдээлэл олдсонгүй !!", {
         position: "top-center",
@@ -236,25 +222,20 @@ const HackathonTeam = ({
     await teamRegister(hackathonTeam);
   };
 
+  const submitBtnDisaled = forms.length === 1;
+
+  // console.log('SignupButtonGroup',SignupButtonGroup)
   const SignupButtonGroup = ({ setFieldValue }) => (
     <Fragment>
       <Button
         type="submit"
         className="default"
-        title="Багийн гишүүн нэмэх"
-        {...btnStyle}
-        style={{ borderRadius: 5 }}
-      />
-
-      <Button
-        type="submit"
-        className="default"
         title="Бүртгүүлэх"
-        // disabled={!submitBtnDisaled}
-        // style={{
-        //   backgroundColor: !submitBtnDisaled ? "grey" : "green",
-        //   borderRadius: 5,
-        // }}
+        disabled={!submitBtnDisaled}
+        style={{
+          backgroundColor: !submitBtnDisaled ? "grey" : "green",
+          borderRadius: 5,
+        }}
         {...btnStyle}
         onClick={createUserForm}
       />
@@ -262,13 +243,13 @@ const HackathonTeam = ({
       <Button
         type="submit"
         className="default"
-        title="Бүртгүүлэх"
-        // disabled={!submitBtnDisaled}
-        // style={{
-        //   marginLeft: 30,
-        //   backgroundColor: !submitBtnDisaled ? "grey" : "green",
-        //   borderRadius: 5,
-        // }}
+        title="Бүртгүүлэхss"
+        disabled={!submitBtnDisaled}
+        style={{
+          marginLeft: 30,
+          backgroundColor: !submitBtnDisaled ? "grey" : "green",
+          borderRadius: 5,
+        }}
         {...btnStyle}
         onClick={() => {
           setFieldValue("isSubmit", true);
@@ -277,6 +258,30 @@ const HackathonTeam = ({
     </Fragment>
   );
 
+  // const teamRegister = (data) => {
+  //   const order = {
+  //     delgerengui: {
+  //       name,
+  //       studentCode,
+  //       phoneNumber,
+  //       email,
+  //     },
+  //   };
+
+  //   setLoading(true);
+  //   axios
+  //     .post("/Medeelel.json", order)
+  //     .then((response) => {
+  //       alert("order amjilttai");
+  //     })
+  //     .catch((error) => {
+  //       console.log("order amjiltgui:" + error);
+  //     })
+  //     .finally(() => {
+  //       setLoading(false);
+  //       console.log("end");
+  //     });
+  // };
   const teamRegister = async (data) => {
     toast.promise(
       axios.post(
@@ -336,59 +341,80 @@ const HackathonTeam = ({
     );
   };
 
-  // const checkStudentCode = (data, id) => {
-  //   const formData = data;
-  //   const isSubmit = formData.isSubmit;
-  //   toast.promise(
-  //     axios.post(
-  //       "https://syscotech-api.herokuapp.com/api/v1/hackathonusers/check",
-  //       data,
-  //       {
-  //         headers: {
-  //           "Access-Control-Allow-Headers": "*",
-  //         },
-  //       }
-  //     ),
-  //     {
-  //       pending: `Оролцогч #${id} мэдээллийг шалгаж байна... `,
-  //       success: {
-  //         render(data) {
-  //           if (isSubmit) {
-  //             setLastUser(false);
-  //           }
-  //           const index = rolesData.indexOf(formData.role);
-  //           rolesData.splice(index, 1);
-  //           setRolesData([...rolesData]);
-  //           forms.push(formData);
-  //           setForms([...forms]);
-  //           return `Оролцогч ${id}-ийг бүртгэх боломжтой.`;
-  //         },
-  //       },
-  //       error: {
-  //         render(data) {
-  //           return `${formData.studentCode} оюутны код бүртгэлтэй байна.!!!`;
-  //         },
-  //       },
-  //     }
-  //   );
-  // };
-
-  const registerHackathonTeam = async (data) => {
-    if (data.schoolName === "Бусад") {
-      data.schoolName = data.subSchoolName;
-    }
-
-    await checkTeamName(data);
+  const checkStudentCode = (data, id) => {
+    const formData = data;
+    const isSubmit = formData.isSubmit;
+    toast.promise(
+      axios.post(
+        "https://syscotech-api.herokuapp.com/api/v1/hackathonusers/check",
+        data,
+        {
+          headers: {
+            "Access-Control-Allow-Headers": "*",
+          },
+        }
+      ),
+      {
+        pending: `Оролцогч #${id} мэдээллийг шалгаж байна... `,
+        success: {
+          render(data) {
+            if (isSubmit) {
+              setLastUser(false);
+            }
+            const index = rolesData.indexOf(formData.role);
+            rolesData.splice(index, 1);
+            setRolesData([...rolesData]);
+            forms.push(formData);
+            setForms([...forms]);
+            return `Оролцогч ${id}-ийг бүртгэх боломжтой.`;
+          },
+        },
+        error: {
+          render(data) {
+            return `${formData.studentCode} оюутны код бүртгэлтэй байна.!!!`;
+          },
+        },
+      }
+    );
   };
+
+  const handleRemove = async (values, id) => {
+    const confirmed = window.confirm(`Багийн гишүүн #${id} - ийг нэмэх ?`);
+
+    if (confirmed) {
+      if (values.role === "") {
+        values.role = "Хөгжүүлэгч";
+        registerHackathonUser(values, id);
+        return;
+      }
+
+      registerHackathonUser(values, id);
+    }
+  };
+
+  const registerHackathonUser = async (data, id) => {
+    const formData = data;
+    const isSubmit = formData.isSubmit;
+
+    await checkStudentCode(formData, id);
+    if (isSubmit) {
+      createUserForm();
+    }
+  };
+
+  // const registerHackathonTeam = async (data) => {
+
+  //   await checkTeamName(data);
+  // };
 
   return (
     <LoginModalWrapper>
       <Formik
         initialValues={initialValues}
         validationSchema={HackathonTeamSchema}
-        onSubmit={(values) => registerHackathonTeam(values)}
+        onSubmit={(values) => handleRemove(values)}
       >
-        {({ values, errors, touched, handleChange, handleSubmit }) => (
+        {({ values, errors, touched, handleChange, handleSubmit,  setFieldValue, }) => (
           <form onSubmit={handleSubmit}>
             <Box style={{ paddingBottom: 32 }} {...contentWrapper}>
               {registerSuccess ? (
@@ -432,7 +458,37 @@ const HackathonTeam = ({
                       errorMsg={errors.firstname}
                       disabled={validTeam}
                     />
-                    {/* <Space />
+                    <FormComponent
+                      name="lastname"
+                      value={values.lastname}
+                      label="Оролцогчийн овог: "
+                      onChange={handleChange}
+                      error={errors.lastname && touched.lastname}
+                      errorMsg={errors.lastname}
+                      disabled={validTeam}
+                    />
+                    <Space />
+                    <FormComponent
+                      name="class"
+                      value={values.class}
+                      label="Ямар мэргэжлээр суралцдаг вэ:"
+                      onChange={handleChange}
+                      error={errors.class && touched.class}
+                      errorMsg={errors.class}
+                      disabled={validTeam}
+                    />
+                    <FormComponent
+                      name="course"
+                      value={values.course}
+                      label="Курс: "
+                      onChange={handleChange}
+                      error={errors.course && touched.course}
+                      errorMsg={errors.course}
+                      disabled={validTeam}
+                      options={courseList}
+                      contentType="select"
+                    />
+                    <Space />
                     <FormComponent
                       label="Сургуулийн нэр:"
                       name="schoolName"
@@ -443,26 +499,21 @@ const HackathonTeam = ({
                       contentType="select"
                       disabled={validTeam}
                       options={schoolData}
-                    /> */}
-                    <Space />
-                    {/* {values.schoolName === "Бусад" && (
-                      <>
-                        <FormComponent
-                          label="Суралцаж буй сургууль:"
-                          name="subSchoolName"
-                          value={values.subSchoolName}
-                          onChange={handleChange}
-                          error={errors.subSchoolName && touched.subSchoolName}
-                          errorMsg={errors.subSchoolName}
-                          disabled={validTeam}
-                        />
-                        <Space />
-                      </>
-                    )} */}
+                    />
                   </Box>
                 </Box>
                 <Box className="col" {...col}>
                   <Box className="formComponent">
+                    <Space />
+                    <FormComponent
+                      name="studentCode"
+                      value={values.studentCode}
+                      label="Оюутны код: "
+                      onChange={handleChange}
+                      error={errors.studentCode && touched.studentCode}
+                      errorMsg={errors.studentCode}
+                      disabled={validTeam}
+                    />
                     <Space />
                     <FormComponent
                       label="И-мэйл хаяг: "
@@ -485,47 +536,6 @@ const HackathonTeam = ({
                       errorMsg={errors.phoneNumber}
                       disabled={validTeam}
                     />
-                    <Space />
-                    <FormComponent
-                      name="class"
-                      value={values.class}
-                      label="Ямар мэргэжлээр суралцдаг вэ:"
-                      onChange={handleChange}
-                      error={errors.class && touched.class}
-                      errorMsg={errors.class}
-                      disabled={validTeam}
-                    />
-                    <Space />
-                    <FormComponent
-                      name="course"
-                      value={values.course}
-                      label="Курс: "
-                      onChange={handleChange}
-                      error={errors.course && touched.course}
-                      errorMsg={errors.course}
-                      disabled={validTeam}
-                      options={courseList}
-                      contentType="select"
-                    />
-                    <FormComponent
-                      name="studentCode"
-                      value={values.studentCode}
-                      label="Оюутны код: "
-                      onChange={handleChange}
-                      error={errors.studentCode && touched.studentCode}
-                      errorMsg={errors.studentCode}
-                      disabled={validTeam}
-                    />
-                    <Space />
-                    <FormComponent
-                      name="lastname"
-                      value={values.lastname}
-                      label="Оролцогчийн овог: "
-                      onChange={handleChange}
-                      error={errors.lastname && touched.lastname}
-                      errorMsg={errors.lastname}
-                      disabled={validTeam}
-                    />
                   </Box>
                 </Box>
               </Box>
@@ -533,7 +543,9 @@ const HackathonTeam = ({
                 <>
                   <Space />
                   <Space />
-                  <SignupButtonGroup />
+                  {!validTeam && !registerSuccess && (
+                    <SignupButtonGroup setFieldValue={setFieldValue} />
+                  )}
                 </>
               )}
             </Box>

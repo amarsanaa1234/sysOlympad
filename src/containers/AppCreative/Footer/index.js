@@ -31,7 +31,7 @@ const Footer = () => {
               <p>ШУТИС-МХТС 400 тоот</p>
               <p>+976 8655 0963</p>
               <br />
-              <p>©2022 Made by SyscoTech Club ❤️</p>
+              <p>©2022 Made by Sys&CoTech Club ❤️</p>
             </Fade>
           </CopyrightInfo>
 

@@ -1,118 +1,103 @@
-import React from "react";
 import Button from "../Button";
-import css from "./style.module.css"
+import css from "./style.module.css";
 import Spinner from "../Spinner";
-import axios from "../axios-orders"
-// import { withRouter } from "react-router-dom";
+import axios from "../axios-orders";
+import React, { useState } from "react";
+import * as Yup from "yup";
+import { Formik } from "formik";
 
-class Bvrtgel extends React.Component {
-    state = {
-        name: null,
-        studentCode: null,
-        phoneNumber: null,
-        email: null,
-        loading: false
-    }
+const Bvrtgel = () => {
+  const [name, setName] = useState(null);
+  const [studentCode, setStudentCode] = useState(null);
+  const [phoneNumber, setPhoneNumber] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-    changeName = (e) => {
-        this.setState({
-            name: e.target.value
-        })
-    }
+  const HackathonTeamSchema = Yup.object().shape({
+    firstname: Yup.string()
+      .min(2, "Оролцогчийн нэрээ оруулна уу!")
+      .required("Оролцогчийн нэрээ оруулна уу!"),
+  });
 
-    changeStudentCode = (e) => {
-        this.setState({
-            studentCode: e.target.value
-        })
-    }
+  const changeName = (e) => {
+    setName(e.target.value);
+  };
 
-    changePhoneNumber = (e) => {
-        this.setState({
-            phoneNumber: e.target.value
-        })
-    }
-    changeEmail = (e) => {
-        this.setState({
-            email: e.target.value
-        })
-    }
+  const changeStudentCode = (e) => {
+    setStudentCode(e.target.value);
+  };
 
-    saveOrder = () => {
-        const order = {
-            delgerengui: {
-              name: this.state.name,
-              studentCode: this.state.studentCode,
-              phoneNumber: this.state.phoneNumber,
-              email: this.state.email
-            }
-          };
-          this.setState({
-            loading: true
-          });
-          axios
-            .post("/Medeelel.json", order)
-            .then(response => {
-                console.log("order amjilttai");
-            })
-            .catch(error => {
-                console.log("order amjiltgui:" + error)
-            })
-            .finally(() => {
-            this.setState({
-              loading: false    
-            })
-            // this.props.history.replace("/orders")
-            console.log('end')
-          })
-    }
+  const changePhoneNumber = (e) => {
+    setPhoneNumber(e.target.value);
+  };
+  const changeEmail = (e) => {
+    setEmail(e.target.value);
+  };
 
-    render() {
-        console.log('propsooooo',this.props);
-        return <div className={css.ContactData}>
-            {this.props.price}
-            {
-                this.state.loading 
-                ?
-                    <Spinner />
-                :
-                    (<div>
-                        <input 
-                        onChange={this.changeName} 
-                        type="text" 
-                        name="name" 
-                        placeholder="Таны нэр" 
-                        />
+  const saveOrder = () => {
+    const order = {
+      delgerengui: {
+        name,
+        studentCode,
+        phoneNumber,
+        email,
+      },
+    };
 
-                        <input 
-                            onChange={this.changeStudentCode}  
-                            type="text" 
-                            name="studentCode" 
-                            placeholder="Оюутны код" 
-                        />
+    setLoading(true);
+    axios
+      .post("/Medeelel.json", order)
+      .then((response) => {
+        alert("order amjilttai");
+      })
+      .catch((error) => {
+        console.log("order amjiltgui:" + error);
+      })
+      .finally(() => {
+        setLoading(false);
+        console.log("end");
+      });
+  };
 
-                        <input 
-                            onChange={this.changePhoneNumber} 
-                            type="text" 
-                            name="phoneNumber" 
-                            placeholder="Утасны дугаар" 
-                        />
+  return (
+    <div className={css.ContactData}>
+      {loading ? (
+        <Spinner />
+      ) : (
+        <div>
+          <input
+            onChange={changeName}
+            type="text"
+            name="name"
+            placeholder="Таны нэр"
+          />
 
-                        <input 
-                            onChange={this.changeEmail} 
-                            type="text" 
-                            name="email" 
-                            placeholder="email" 
-                        />
+          <input
+            onChange={changeStudentCode}
+            type="text"
+            name="studentCode"
+            placeholder="Оюутны код"
+          />
 
-                        <Button 
-                            text="ИЛГЭЭХ" 
-                            btnType="Success"
-                            daragdsan={this.saveOrder}
-                        />
-                    </div>)
-            }
+          <input
+            onChange={changePhoneNumber}
+            type="text"
+            name="phoneNumber"
+            placeholder="Утасны дугаар"
+          />
+
+          <input
+            onChange={changeEmail}
+            type="text"
+            name="email"
+            placeholder="email"
+          />
+
+          <Button text="ИЛГЭЭХ" btnType="Success" daragdsan={saveOrder} />
         </div>
-    }
-}
+      )}
+    </div>
+  );
+};
 
-export default Bvrtgel; 
+export default Bvrtgel;

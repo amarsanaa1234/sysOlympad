@@ -143,26 +143,51 @@ export const Footer_Data = [
     title: 'Бидэнтэй холбогдох',
     menuItems: [
       {
-        url: '#',
-        text: 'Support Center',
+        url: 'https://www.facebook.com/SysAndCoTech',
+        text: 'facebook Page',
       },
       {
-        url: '#',
-        text: 'Customer Support',
+        url: 'tel:+976865509863',
+        text: 'Холбогдох утас',
       },
       {
-        url: '#',
-        text: 'About Us',
-      },
-      {
-        url: '#',
-        text: 'Copyright',
-      },
-      {
-        url: '#',
-        text: 'Popular Campaign',
+        url: 'https://goo.gl/maps/Qwv3RYvybs8YqJsS8',
+        text: 'Хаяг байршил',
       },
     ],
   },
+  {
+    id: 2,
+    title: 'Мэдээлэл',
+    menuItems: [
+      {
+        id: 1,
+        url: '/',
+        text: 'Үйл ажиллагаа'
+      },
+      {
+        id: 2,
+        url: '/',
+        text: 'Түгээмэл асуулт хариулт'
+      }
+    ]
+  },
+  {
+    id: 3,
+    title: 'Клубийн бодлого',
+    menuItems: [
+      {
+        id: 1,
+        url: '/',
+        text: 'Гишүүний эрх, үүрэг'
+      },
+      {
+        id: 2,
+        url: '/',
+        text: 'Клубийн журам'
+      }
+    ]
+  }
+  
   
 ];

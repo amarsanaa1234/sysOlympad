@@ -35,7 +35,7 @@ const Footer = ({
             <Text content="ШУТИС-МХТС 400 тоот" {...textStyle} />
             <Text content="+976 8655 0963" {...textStyle} />
             <br />
-              <p style={{color: '#fff'}}>©2022 Made by SyscoTech Club ❤️</p>
+              <p style={{color: '#fff'}}>©2022 Made by Sys&CoTech Club ❤️</p>
           </Box>
           {/* End of footer logo column */}
           <Box {...colTwo}>

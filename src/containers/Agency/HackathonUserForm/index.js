@@ -160,8 +160,6 @@ const HackathonUsersSchema = Yup.object().shape({
   ),
 });
 
-////////////////////this
-
 const HackathonUserForm = ({
   row,
   col,

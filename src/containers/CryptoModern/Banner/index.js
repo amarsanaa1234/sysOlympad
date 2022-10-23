@@ -35,7 +35,7 @@ const Banner = () => {
               content={`"Програмчлалын Олимпиад - 2022 МХТС-ийн 1-3 курсын бүх оюутан залууст"`}
             />
           </Fade>
-          <Fade up delay={300}>
+          {/* <Fade up delay={300}>
             <ButtonGroup>
               <Button className="primary" title="GET TOKEN" />
               <Button
@@ -44,7 +44,7 @@ const Banner = () => {
                 title="WHITE PAPER"
               />
             </ButtonGroup>
-          </Fade>
+          </Fade> */}
         </BannerContent>
         <BannerImage>
           <Fade in delay={100}>
