@@ -65,35 +65,44 @@ const Bvrtgel = () => {
         <Spinner />
       ) : (
         <div>
-          <input
-            onChange={changeName}
-            type="text"
-            name="name"
-            placeholder="Таны нэр"
-          />
+          <h2>Бүртгүүлэх хэсэг</h2>
+            <label >Таны нэр
+            <input 
+            onChange={changeName} 
+            type="text" 
+            name="name" 
+            />
+            </label>
+            
+            <label >Оюутны код
+            <input 
+                onChange={changeStudentCode}  
+                type="text" 
+                name="studentCode" 
+            />
+            </label>
 
-          <input
-            onChange={changeStudentCode}
-            type="text"
-            name="studentCode"
-            placeholder="Оюутны код"
-          />
+            <label >Утасны дугаар
+            <input 
+                onChange={changePhoneNumber} 
+                type="text" 
+                name="phoneNumber" 
+            />
+            </label>
 
-          <input
-            onChange={changePhoneNumber}
-            type="text"
-            name="phoneNumber"
-            placeholder="Утасны дугаар"
-          />
+            <label >email
+            <input 
+                onChange={changeEmail} 
+                type="text" 
+                name="email" 
+            />
+            </label>
 
-          <input
-            onChange={changeEmail}
-            type="text"
-            name="email"
-            placeholder="email"
-          />
-
-          <Button text="ИЛГЭЭХ" btnType="Success" daragdsan={saveOrder} />
+            <Button 
+                text="Илгээх" 
+                btnType="Success"
+                daragdsan={saveOrder}
+            />
         </div>
       )}
     </div>

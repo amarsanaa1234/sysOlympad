@@ -1,15 +1,135 @@
 .ContactData {
-    width: 100%;
-    border: 1px solid #eee;
-    box-sizing: 0 2px 3x #ccc;
-    box-shadow: 0 2px 3px #ccc;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+    border: 1px solid rgb(255, 255, 255);
+    box-sizing: 0 2px 3x rgb(255, 255, 255);
     padding: 10px;
-    text-align: center;
+    border-radius: 5px;
 }
-
+.ContactData label{
+    display: block;
+    margin-left: 55px;
+    display: block;
+    color: #767676;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    -webkit-transition: 0.2s ease all;
+    transition: 0.2s ease all;
+}
+.ContactData div{
+    width: 61%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.ContactData h2{
+    font-size: 22px;
+    color: #20201D;
+    margin-top: 35px;
+    margin-bottom: 30px;
+    font-weight: 400;
+}
 .ContactData input {
     display: block;
     font-size: 18px;
     padding: 5px;
-    margin: 10px auto;
+    margin: 10px 10px 10px 0px;
+    border-radius: 5px;
+    border: 1px solid #EBEBEB;
+    padding: 11px;
+    width: 88%;
+    
+}
+.ContactData button{
+    background-color: #d1397c;
+    color: #fff;
+    min-width: 156px;
+    padding-left: 20px !important;
+    padding-right: 20px;
+    font-size: 14px;
+    min-height: 48px;
+    display: block;
+    margin-left: 55px !important;
+}
+.ContactData button text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media only screen and (max-width: 667px){
+    .ContactData{
+    width: 100%;
+    padding-top: 50px;
+}
+
+}
+@media only screen and (max-width: 991px){
+    .ContactData button{
+        margin-left: 36px !important;
+    }
+    .ContactData div{
+        width: 100%;
+    }
+}
+@media only screen and (min-width: 1200px){
+    .ContactData{
+        max-width: 1170px;
+        width: 100%;
+    }
+}
+@media only screen and (min-width: 168px){
+    .ContactData input {
+        width: 92%;
+    } 
+    .ContactData label{
+        margin-left: 21px;
+    }
+    .ContactData button{
+        margin-left: 21px !important;
+    }
+}
+@media only screen and (min-width: 480px){
+.ContactData h2{
+    font-size: 36px;
+}
+}
+@media only screen and (min-width: 769px){
+    .ContactData input {
+        width: 92%;
+    } 
+    .ContactData label{
+        margin-left: 28px;
+    }
+    .ContactData button{
+        margin-left: 28px !important;
+    }
+    .ContactData h2{
+        font-size: 50px;
+    }
+}
+@media only screen and (min-width: 991px){
+    .ContactData input {
+        width: 88%;
+    } 
+    .ContactData label{
+        margin-left: 36px;
+    }
+    .ContactData button{
+        margin-left: 36px !important;
+    }
+}
+@media only screen and (min-width: 1200px){
+.ContactData input {
+    width: 88%;
+    
+} 
+.ContactData label{
+    margin-left: 54px;
+}
+.ContactData button{
+    margin-left: 54px !important;
+}
 }
