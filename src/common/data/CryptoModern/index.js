@@ -99,25 +99,37 @@ export const Faq = [
     expend: true,
     title: 'Олимпиад хаана зохиогдох вэ?',
     description:
-      'Our Customer Experience Team is available 7 days a week and we offer 2 ways to get in contact.Email and Chat . We try to reply quickly, so you need not to wait too long for a response!. ',
+      'Шинжлэх ухаан технелогийн их сургууль - Мэдээлэл холбоо технелогийн их сургууль. ',
   },
   {
     id: 2,
     title: 'Олимпиад хэзээ зохиогдох вэ?',
     description:
-      'Please read the documentation carefully . We also have some online  video tutorials regarding this issue . If the problem remains, Please Open a ticket in the support forum . ',
+      '2022 - оны 11 сарын 10 - ний өдөр 10:00 цагаас. ',
   },
   {
     id: 3,
     title: 'Олимпиад-нд хэн оролцож болох вэ?',
     description:
-      'At first, Please check your internet connection . We also have some online  video tutorials regarding this issue . If the problem remains, Please Open a ticket in the support forum .',
+      'Мэдээлэл холбоо технелогийн их сургууль (МХТС) 1 - 3 курсын оюутнууд.',
   },
   {
     id: 4,
     title: 'Тэмцээнд юу авч очих вэ?',
     description:
-      'We are giving the update of this theme continuously . You will receive an email Notification when we push an update. Always try to be updated with us .',
+      'Зохион байгуулагчийн зүгээс бэлдэж өгсөн лабораторийн компьютер байх тул та оюутны үнэмлэх өөрийгөө батлах зүйлтнэй ирээрээ.',
+  },
+  {
+    id: 4,
+    title: 'Техникийн зөвлөгөөн хэзээ вэ?, хаана вэ?',
+    description:
+      '2022 - оны 11 сарын 7 - ний өдөр 12:50 цагаас Sys&CoTech - Discord channel',
+  },
+  {
+    id: 4,
+    title: 'Тэмцээнд юу авч очих вэ?',
+    description:
+      '.',
   },
 ];
 

@@ -5,7 +5,7 @@ import Heading from 'common/components/Heading';
 import NextImage from 'common/components/NextImage';
 import Container from 'common/components/UI/Container';
 import SectionWrapper, { ContentWrapper } from './privacy.style';
-import Illustration from 'common/assets/image/cryptoModern/illustration1.png';
+import Illustration from 'common/assets/image/cryptoModern/award.jpg';
 
 const PrivacyPortal = () => {
   return (

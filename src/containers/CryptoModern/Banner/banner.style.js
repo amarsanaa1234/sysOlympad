@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
 
 const BannerWrapper = styled.div`
-  padding-top: 100px;
   min-height: 802px;
   overflow: hidden;
   background-image: linear-gradient(

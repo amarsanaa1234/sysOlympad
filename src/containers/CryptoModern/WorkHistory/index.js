@@ -25,30 +25,30 @@ const WorkHistory = ({ row, col, cardStyle, btnStyle }) => {
               <Card className="card" {...cardStyle}>
                 <NextImage src={shape1} alt="Shape 1" />
                 <h3>
-                  <CountUp start={0} end={250000} />+
+                  <CountUp start={0} end={250000} duration={2}/>₮
                 </h3>
-                <Text content="Awards" />
+                <Text content={<div style={{fontFamily: 'MulishBold', fontSize: '20px'}}>1 - Байр</div>} />
               </Card>
               <Card className="card" {...cardStyle}>
                 <NextImage src={shape2} alt="Shape 2" />
                 <h3>
-                  <CountUp start={0} end={80} duration={5} />
+                  <CountUp start={0} end={200000} duration={2} />₮
                 </h3>
-                <Text content="Million Customers" />
+                <Text content={<div style={{fontFamily: 'MulishBold', fontSize: '20px'}}>2 - Байр</div>} />
               </Card>
               <Card className="card" {...cardStyle}>
                 <NextImage src={shape3} alt="Shape 3" />
                 <h3>
-                  <CountUp start={0} end={9350} duration={5} />+
+                  <CountUp start={0} end={150000} duration={2} />₮
                 </h3>
-                <Text content="Community" />
+                <Text content={<div style={{fontFamily: 'MulishBold', fontSize: '20px'}}>3 - Байр</div>} />
               </Card>
               <Card className="card" {...cardStyle}>
                 <NextImage src={shape4} alt="Shape 4" />
                 <h3>
-                  <CountUp start={0} end={30000} duration={5} />+
+                  <CountUp start={0} end={100000} duration={2} />₮
                 </h3>
-                <Text content="Transactions" />
+                <Text content={<div style={{fontFamily: 'MulishBold', fontSize: '20px'}}>Уран бодолт</div>} />
               </Card>
             </CounterUpArea>
           </Box>

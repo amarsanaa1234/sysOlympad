@@ -13,7 +13,7 @@ import Container from "common/components/UI/Container";
 import useOnClickOutside from "common/hooks/useOnClickOutside";
 import NavbarWrapper, { MenuArea, MobileMenu, Search } from "./navbar.style";
 import LogoImage from "common/assets/image/cryptoModern/client_logo/syscoLogo.png";
-import LogoImageAlt from "common/assets/image/cryptoModern/client_logo/syscoLogo.png";
+import LogoImageAlt from "common/assets/image/cryptoModern/client_logo/sysLogoAlt.png";
 
 import { navbar } from "common/data/CryptoModern";
 
