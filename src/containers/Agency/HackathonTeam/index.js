@@ -12,6 +12,8 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import Alert from "common/components/Alert";
+import { db } from "plugins/firebase";
+import { ref, child, get } from "firebase/database";
 // import axios from "../../Agency/axios-orders"
 
 const HackathonTeamSchema = Yup.object().shape({
@@ -402,6 +404,22 @@ const HackathonTeam = ({
     }
   };
 
+  const handleMe = () => {
+    console.log("hi");
+
+    get(child(db, `Medeelel/-NF0DNu9eOtaRFX-Fceo`))
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          console.log(snapshot.val());
+        } else {
+          console.log("No data available");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
   // const registerHackathonTeam = async (data) => {
 
   //   await checkTeamName(data);
@@ -409,12 +427,20 @@ const HackathonTeam = ({
 
   return (
     <LoginModalWrapper>
+      <button onClick={handleMe}> nmg darrrrr </button>
       <Formik
         initialValues={initialValues}
         validationSchema={HackathonTeamSchema}
         onSubmit={(values) => handleRemove(values)}
       >
-        {({ values, errors, touched, handleChange, handleSubmit,  setFieldValue, }) => (
+        {({
+          values,
+          errors,
+          touched,
+          handleChange,
+          handleSubmit,
+          setFieldValue,
+        }) => (
           <form onSubmit={handleSubmit}>
             <Box style={{ paddingBottom: 32 }} {...contentWrapper}>
               {registerSuccess ? (
