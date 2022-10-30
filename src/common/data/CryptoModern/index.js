@@ -30,8 +30,19 @@ export const navbar = {
 /* ------------------------------------ */
 // Features data section
 /* ------------------------------------ */
-import featureIcon1 from 'common/assets/image/cryptoModern/callPro.png';
-import featureIcon2 from 'common/assets/image/cryptoModern/lime.png';
+import videoTheme from "../../assets/image/appCreative/experienceVideo.png";
+import fiboCloud from "../../assets/image/appCreative/client_logo/1.png";
+import featureIcon1 from 'common/assets/image/cryptoModern/white.png';
+import featureIcon2 from 'common/assets/image/cryptoModern/limeLogo.png';
+import featureIcon3 from 'common/assets/image/cryptoModern/nasha.webp';
+import featureIcon4 from 'common/assets/image/cryptoModern/fibo-cloud.png';
+
+export const event = {
+  icon: fiboCloud,
+  title: "Fibo Cloud",
+  description:
+    "Үүлэн  технологийн чиглэлээр дагнаж үйл ажиллагаа явуулдаг Монгол дахь цор ганц компани FIBO CLOUD.",
+};
 
 export const Features = [
   {
@@ -43,26 +54,20 @@ export const Features = [
   },
   {
     id: 2,
-    icon: featureIcon2,
-    title: 'Lime',
+    icon: featureIcon3,
+    title: 'Nasha Tech LLC',
     description:
-      'Your mining rigs are already set up and running. As soon as you set up your account.',
+      'IInternet болон E-Commerce нь улс үндэстэн болон байршлаас үл хамааран бүгдэд адил боломжийг олгодог бөгөөд энэ боломжоо алдалгүй ашиглахад бид танд тусална.',
   },
   {
     id: 3,
-    icon: featureIcon2,
-    title: 'Verified Mining',
+    icon: featureIcon4,
+    title: 'Fibo Cloud',
     description:
-      'Your mining rigs are already set up and running. As soon as you set up your account.',
-  },
-  {
-    id: 4,
-    icon: featureIcon2,
-    title: 'Verified Mining',
-    description:
-      'Your mining rigs are already set up and running. As soon as you set up your account.',
+      'Үүлэн технологийн чиглэлээр дагнаж үйл ажиллагаа явуулдаг Монгол дахь цор ганц компани FIBO CLOUD.',
   },
 ];
+
 
 /* ------------------------------------ */
 // Wallet  data section
@@ -160,7 +165,7 @@ export const Footer_Data = [
     menuItems: [
       {
         id: 1,
-        url: '/',
+        url: 'https://www.syscotech.club/',
         text: 'Үйл ажиллагаа'
       },
       {
@@ -176,12 +181,12 @@ export const Footer_Data = [
     menuItems: [
       {
         id: 1,
-        url: '/',
+        url: 'https://www.syscotech.club/',
         text: 'Гишүүний эрх, үүрэг'
       },
       {
         id: 2,
-        url: '/',
+        url: 'https://www.syscotech.club/',
         text: 'Клубийн журам'
       }
     ]

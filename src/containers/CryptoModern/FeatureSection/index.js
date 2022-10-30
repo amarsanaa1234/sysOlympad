@@ -26,7 +26,7 @@ const FeatureSection = ({
         <Box {...sectionHeader} className="sectionHeader">
           <Text content={<div style={{fontFamily: "MulishBold"}}>Ивээн тэтгэгч</div>} {...sectionSubTitle} />
           <Heading
-            content={<div style={{fontFamily: "MulishBold"}}>Sys&CoTech клубээс зохион байгуулж буй "Програмчлалын Олимпиад - 2022" тэмцээний ивээн тэтгэгч байгууллагууд</div>}
+            content={<div style={{fontFamily: "Roboto", color: '#30D4FE'}}>Sys&CoTech клубээс зохион байгуулж буй "Програмчлалын Олимпиад - 2022" тэмцээний ивээн тэтгэгч байгууллагууд</div>}
             {...sectionTitle}
           />
         </Box>

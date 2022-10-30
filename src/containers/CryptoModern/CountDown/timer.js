@@ -115,23 +115,23 @@ class NormalClock extends React.Component {
     const { countdown, divider } = this.props;
     return (
       <div className={'NormalClock'}>
-        <NormalUnitContainer countdown={countdown} unit={'өдөр'} digit={days} />
+        <NormalUnitContainer countdown={countdown} unit={<div style={{color: '#30D4FE'}}>өдөр</div>} digit={days} />
         {divider ? <span className="dividerColon">:</span> : ''}
         <NormalUnitContainer
           countdown={countdown}
-          unit={'цаг'}
+          unit={<div style={{color: '#30D4FE'}}>цаг</div>}
           digit={hours}
         />
         {divider ? <span className="dividerColon">:</span> : ''}
         <NormalUnitContainer
           countdown={countdown}
-          unit={'минут'}
+          unit={<div style={{color: '#30D4FE'}}>минут</div>}
           digit={minutes}
         />
         {divider ? <span className="dividerColon">:</span> : ''}
         <NormalUnitContainer
           countdown={countdown}
-          unit={'секунд'}
+          unit={<div style={{color: '#30D4FE'}}>ceкунт</div>}
           digit={seconds}
         />
       </div>

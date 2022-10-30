@@ -10,7 +10,7 @@ import Button from 'common/components/Button';
 import FeatureBlock from 'common/components/FeatureBlock';
 import Container from 'common/components/UI/Container';
 import WorkHistoryWrapper, { CounterUpArea } from './workHistory.style';
-import shape1 from 'common/assets/image/cryptoModern/Shape-1.png';
+import shape1 from 'common/assets/image/cryptoModern/award.png';
 import shape2 from 'common/assets/image/cryptoModern/Shape-2.png';
 import shape3 from 'common/assets/image/cryptoModern/Shape-3.png';
 import shape4 from 'common/assets/image/cryptoModern/Shape-4.png';
@@ -25,21 +25,21 @@ const WorkHistory = ({ row, col, cardStyle, btnStyle }) => {
               <Card className="card" {...cardStyle}>
                 <NextImage src={shape1} alt="Shape 1" />
                 <h3>
-                  <CountUp start={0} end={250000} duration={2}/>₮
+                  <CountUp start={0} end={300000} duration={2}/>₮
                 </h3>
                 <Text content={<div style={{fontFamily: 'MulishBold', fontSize: '20px'}}>1 - Байр</div>} />
               </Card>
               <Card className="card" {...cardStyle}>
                 <NextImage src={shape2} alt="Shape 2" />
                 <h3>
-                  <CountUp start={0} end={200000} duration={2} />₮
+                  <CountUp start={0} end={250000} duration={2} />₮
                 </h3>
                 <Text content={<div style={{fontFamily: 'MulishBold', fontSize: '20px'}}>2 - Байр</div>} />
               </Card>
               <Card className="card" {...cardStyle}>
                 <NextImage src={shape3} alt="Shape 3" />
                 <h3>
-                  <CountUp start={0} end={150000} duration={2} />₮
+                  <CountUp start={0} end={200000} duration={2} />₮
                 </h3>
                 <Text content={<div style={{fontFamily: 'MulishBold', fontSize: '20px'}}>3 - Байр</div>} />
               </Card>
@@ -56,7 +56,7 @@ const WorkHistory = ({ row, col, cardStyle, btnStyle }) => {
             <FeatureBlock
               title={<Heading content={<div style={{fontFamily: 'MulishBold'}}>Шагналын сан</div>} />}
               description={
-                <Text content="We have worked with some leading agencies around the globe and their appreciation is our main strength. In the modern cryptocurrency era, customer satisfaction is our main criteria. " />
+                <Text content="Sys&CoTech Програмчлалын олимпиадын шагналын сан дээр нэмэгдээд ивээн тэтгэгчийн гарын бэлгэ." />
               }
               // button={
               //   <Button

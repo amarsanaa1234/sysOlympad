@@ -62,7 +62,7 @@ const Main = () => {
           <WorkHistory />
           <UpdateScreen endTime={endTime} />
           {/* <LoginModal /> */}
-          <Bvrtgel/>
+          {/* <Bvrtgel/> */}
           {/* <Investment/> */}
           <Privacy />
           <WalletSection />

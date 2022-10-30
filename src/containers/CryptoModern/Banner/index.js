@@ -24,7 +24,7 @@ const Banner = () => {
           <Fade up delay={100}>
             <Heading
               as="h1"
-              content={<div style={{fontFamily: "MuhlishBold"}}>Програмчлалын Олимпиад - 2022</div>}
+              content={<div style={{fontFamily: "Roboto"}}>Програмчлалын Олимпиад - 2022</div>}
             />
           </Fade>
           <Fade up delay={200}>
@@ -32,7 +32,7 @@ const Banner = () => {
               style={{
                 lineHeight: "1.6",
               }}
-              content={<div style={{fontFamily: "MuhlishBold", fontSize: "18px"}}>Програмчлалын Олимпиад - 2022 МХТС-ийн 1-3 курсын бүх оюутан залууст</div>}
+              content={<div style={{fontFamily: "MuhlishBold", fontSize: "18px", color: '#30D4FE'}}>Програмчлалын Олимпиад - 2022 МХТС-ийн 1-3 курсын бүх оюутан залууст</div>}
             />
           </Fade>
           {/* <Fade up delay={300}>

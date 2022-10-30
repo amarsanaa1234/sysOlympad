@@ -9,8 +9,6 @@ import FeatureBlock from 'common/components/FeatureBlock';
 import { WalletFeatures } from 'common/data/CryptoModern';
 import SectionWrapper, { ContentWrapper } from './walletSection.style';
 import WalletImg from 'common/assets/image/cryptoModern/illustration2.png';
-import BtnIcon1 from 'common/assets/image/cryptoModern/apple.png';
-import BtnIcon2 from 'common/assets/image/cryptoModern/playstore.png';
 
 const WalletPortal = () => {
   return (
@@ -34,22 +32,6 @@ const WalletPortal = () => {
                   />
                 ))}
               </Fade>
-            </div>
-            <div className="btnGroups">
-              <Button
-                title="APP STORE"
-                variant="textButton"
-                icon={<img src={BtnIcon1?.src} />}
-                iconPosition="left"
-                className="appStore"
-              />
-              <Button
-                title="PLAY STORE"
-                variant="textButton"
-                icon={<img src={BtnIcon2?.src} />}
-                iconPosition="left"
-                className="playStore"
-              />
             </div>
             <Text
               className="windowsAllert"
