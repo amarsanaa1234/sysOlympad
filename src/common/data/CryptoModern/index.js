@@ -8,7 +8,7 @@ export const navbar = {
   navMenu: [
     {
       id: 1,
-      label: 'Олимпмад',
+      label: 'Олимпиад',
       path: '#home',
       offset: '84',
     },
@@ -73,24 +73,22 @@ export const Features = [
 // Wallet  data section
 /* ------------------------------------ */
 import walletIcon1 from 'common/assets/image/cryptoModern/wallet1.png';
-import walletIcon2 from 'common/assets/image/cryptoModern/wallet2.png';
-import walletIcon3 from 'common/assets/image/cryptoModern/wallet3.png';
 
 export const WalletFeatures = [
   {
     id: 1,
     icon: walletIcon1,
-    title: 'Secure transfers with verified Casinos.',
+    title: 'Тасралтгүй суралцъя .',
   },
   {
     id: 2,
-    icon: walletIcon2,
-    title: 'Easily buy and sell CLV within the wallet',
+    icon: walletIcon1,
+    title: 'Зогсолтгүй урагшилъя .',
   },
   {
     id: 3,
-    icon: walletIcon3,
-    title: 'Pay as many as you want',
+    icon: walletIcon1,
+    title: 'Хамтдаа хөгжье .',
   },
 ];
 
@@ -101,10 +99,9 @@ export const WalletFeatures = [
 export const Faq = [
   {
     id: 1,
-    expend: true,
-    title: 'Олимпиад хаана зохиогдох вэ?',
+    title: 'Програмчлалын олимпиад гэж юу вэ?',
     description:
-      'Шинжлэх ухаан технелогийн их сургууль - Мэдээлэл холбоо технелогийн их сургууль. ',
+      'Sys&CoTech клубийн жил бүр уламжлал болгон зохион байгуулдаг "Програмчлалын олимпиад" нь  ШУТИС МХТС-ийн оюутнуудын дунд явагддаг ба оюутан бүрт програмчлалын аль нэг хэлээр бодлого бодож хоорондоо өрсөлдөх, мэдлэг чадвараа дээшлүүлэх боломжийг олгодог.',
   },
   {
     id: 2,
@@ -114,28 +111,36 @@ export const Faq = [
   },
   {
     id: 3,
-    title: 'Олимпиад-нд хэн оролцож болох вэ?',
+    expend: true,
+    title: 'Олимпиад хаана зохиогдох вэ?',
     description:
-      'Мэдээлэл холбоо технелогийн их сургууль (МХТС) 1 - 3 курсын оюутнууд.',
+      'Шинжлэх Ухаан Технологийн Их Сургууль - Мэдээлэл, Холбооны Технологийн Сургууль (МХТС) . ',
   },
   {
     id: 4,
-    title: 'Тэмцээнд юу авч очих вэ?',
+    title: 'Хэрхэн бүртгүүлэх вэ?',
     description:
-      'Зохион байгуулагчийн зүгээс бэлдэж өгсөн лабораторийн компьютер байх тул та оюутны үнэмлэх өөрийгөө батлах зүйлтнэй ирээрээ.',
+      'Өөрийн мэдээллийг энэ хүү веб сайтын бүртгүүлэх хэсгээр бүртгүүлнэ.',
+  },
+  {
+    id: 5,
+    title: 'Олимпиадад хэн оролцох боломжтой вэ?',
+    description:
+      'ШУТИС - Мэдээлэл, Холбооны Технологийн Сургууль (МХТС) 1 - 3 курсийн оюутнууд оролцох боломжтой.',
   },
   {
     id: 4,
-    title: 'Техникийн зөвлөгөөн хэзээ вэ?, хаана вэ?',
+    title: 'Техникийн зөвлөгөөн хэрхэн явагдах вэ?',
     description:
       '2022 - оны 11 сарын 7 - ний өдөр 12:50 цагаас Sys&CoTech - Discord channel',
   },
   {
-    id: 4,
-    title: 'Тэмцээнд юу авч очих вэ?',
+    id: 6,
+    title: 'Оролцогчийн зүгээс юу шаардлагатай вэ?',
     description:
-      '.',
+      'Зохион байгуулагчийн зүгээс бэлдэж өгсөн лабораторийн компьютер байх тул та оюутны үнэмлэх өөрийгөө батлах зүйлтэй ирээрэй..',
   },
+  
 ];
 
 /* ------------------------------------ */

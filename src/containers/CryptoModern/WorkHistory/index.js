@@ -10,10 +10,10 @@ import Button from 'common/components/Button';
 import FeatureBlock from 'common/components/FeatureBlock';
 import Container from 'common/components/UI/Container';
 import WorkHistoryWrapper, { CounterUpArea } from './workHistory.style';
-import shape1 from 'common/assets/image/cryptoModern/award.png';
-import shape2 from 'common/assets/image/cryptoModern/Shape-2.png';
-import shape3 from 'common/assets/image/cryptoModern/Shape-3.png';
-import shape4 from 'common/assets/image/cryptoModern/Shape-4.png';
+import shape1 from 'common/assets/image/cryptoModern/NEG.png';
+import shape2 from 'common/assets/image/cryptoModern/HOYR.png';
+import shape3 from 'common/assets/image/cryptoModern/GURAW.png';
+import shape4 from 'common/assets/image/cryptoModern/TUSGAI.png';
 
 const WorkHistory = ({ row, col, cardStyle, btnStyle }) => {
   return (
@@ -56,7 +56,7 @@ const WorkHistory = ({ row, col, cardStyle, btnStyle }) => {
             <FeatureBlock
               title={<Heading content={<div style={{fontFamily: 'MulishBold'}}>Шагналын сан</div>} />}
               description={
-                <Text content="Sys&CoTech Програмчлалын олимпиадын шагналын сан дээр нэмэгдээд ивээн тэтгэгчийн гарын бэлгэ." />
+                <Text content="Sys&CoTech клубийн санаачлан зохион байгуулсан  програмчлалын олимпиадын  шагналын сан + ивээн тэтгэгчдийн гарын бэлэг." />
               }
               // button={
               //   <Button

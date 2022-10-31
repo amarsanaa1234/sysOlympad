@@ -8,7 +8,7 @@ import Button from 'common/components/Button';
 import FeatureBlock from 'common/components/FeatureBlock';
 import { WalletFeatures } from 'common/data/CryptoModern';
 import SectionWrapper, { ContentWrapper } from './walletSection.style';
-import WalletImg from 'common/assets/image/cryptoModern/illustration2.png';
+import WalletImg from 'common/assets/image/cryptoModern/frame.png';
 
 const WalletPortal = () => {
   return (
@@ -19,8 +19,8 @@ const WalletPortal = () => {
             <NextImage src={WalletImg} alt="Wallet Image" />
           </div>
           <div className="content">
-            <Heading content="Our wallet is built for the cryptocurrency  beginner" />
-            <Text content="Lorem ipsum dolor sit amet consectetur adipisicing elit sed eiu Lorem ipsum dolor sit elit sed eiu Lorem ipsum dolor sit ." />
+            <Heading content={<div style={{fontFamily: 'Roboto'}}>"System & Computer Technology"</div>} />
+            {/* <Text content="Sys&CoTech 11 дэх удаагийн Програмчлалын олимпиад." /> */}
             <div className="walletfeatures">
               <Fade up>
                 {WalletFeatures.map((feature, index) => (
@@ -33,10 +33,6 @@ const WalletPortal = () => {
                 ))}
               </Fade>
             </div>
-            <Text
-              className="windowsAllert"
-              content="*Windows app coming soon"
-            />
           </div>
         </ContentWrapper>
       </Container>

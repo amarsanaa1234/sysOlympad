@@ -25,11 +25,8 @@ const HackathonTeamSchema = Yup.object().shape({
     .required("Заавал оруулах"),
   studentCode: Yup.string()
     .required("Заавал оруулах")
-    .test("student-code", "Оюутаны код буруу байна!", (value, data) => {
-      const {
-        parent: { schoolName },
-      } = data;
-      return schoolValidation(schoolName, value);
+    .test("student-code", "Оюутаны код буруу байна!", (value) => {
+      return schoolValidation(value);
     }),
   class: Yup.string()
     .min(2, "Суралцаж буй мэргэжил ээ бичнэ үү!!")
@@ -161,23 +158,15 @@ export const FormComponent = ({
   );
 };
 
-const schoolData = ["ШУТИС", "МУИС"];
+const courseList = ["1", "2", "3", "4"];
 
-const courseList = ["1", "2", "3"];
-
-const schoolValidation = (schoolName, value) => {
-  switch (schoolName) {
-    case "ШУТИС":
+const schoolValidation = (value) => {
+  switch (value) {
+    case "studentCode":
       // B180930008
       return /^[Bb]{1}[1-2]{1}[0-9]{8}$/.test(value);
-    case "МУИС":
-      // 21b1num0595
-      return /^[0-9]{2}[a-zA-Z]{1}[0-9]{1}[a-zA-Z]{1}[a-zA-Z]{1}[a-zA-Z]{1}[0-9]{4}$/.test(
-        value
-      );
-    default:
-      return value ? value.length > 2 : false;
   }
+  
 };
 
 const HackathonTeam = ({
@@ -187,16 +176,16 @@ const HackathonTeam = ({
   contentWrapper,
   validTeam,
   setValidTeam,
+  registerSuccess = true,
 }) => {
   const [forms, setForms] = useState([]);
-  const [studentCode, setStudentCode] = useState(null);
-  const [phoneNumber, setPhoneNumber] = useState(null);
-  const [email, setEmail] = useState(null);
-  const [firstname, setFirstName] = useState(null);
-  const [schoolName, setSchoolName] = useState(null);
-  const [className, setClassNames] = useState(null);
-  const [lastname, setLastname] = useState(null);
-  const [course, setCourse] = useState(null);
+  const [studentCode, setStudentCode] = useState();
+  const [phoneNumber, setPhoneNumber] = useState();
+  const [email, setEmail] = useState();
+  const [firstname, setFirstName] = useState();
+  const [className, setClassNames] = useState();
+  const [lastname, setLastname] = useState();
+  const [course, setCourse] = useState();
 
   const changeName = (e) => {
     setFirstName(e.target.value);
@@ -204,10 +193,6 @@ const HackathonTeam = ({
 
   const changeStudentCode = (e) => {
     setStudentCode(e.target.value);
-  };
-
-  const changeSchoolName = (e) => {
-    setSchoolName(e.target.value);
   };
 
   const changeClassName = (e) => {
@@ -232,7 +217,6 @@ const HackathonTeam = ({
     firstname,
     email,
     phoneNumber,
-    schoolName: schoolData[0],
     className,
     course: courseList[0],
     studentCode,
@@ -383,11 +367,37 @@ const HackathonTeam = ({
           values,
           errors,
           touched,
-          handleChange,
           handleSubmit,
         }) => (
           <form onSubmit={handleSubmit}>
             <Box style={{ paddingBottom: 32 }} {...contentWrapper}>
+            {registerSuccess ? (
+                <Alert
+                  style={{
+                    borderColor: "#badbcc",
+                    backgroundColor: "#d1e7dd",
+                    color: "#0f5132",
+                    marginBottom: 30,
+                  }}
+                >
+                  - Бүртгэлийн хураамжийг төлснөөр тэмцээнд оролцох эрх
+                  баталгаажих болно. <br /> - Бүртгэлтэй холбоотой асууж
+                  тодруулах зүйл гарвал манай сошиал хаягууд руу хандана уу!
+                </Alert>
+              ) : (
+                <Alert
+                  style={{
+                    borderColor: "#ffecb5",
+                    backgroundColor: "#fff3cd",
+                    color: "#664d03",
+                    marginBottom: 30,
+                  }}
+                >
+                  Нэг баг нь 3-5 хүний бүрэлдэхүүнтэй оролцох боломжтой бөгөөд
+                  багийн гишүүний тоо хүрээгүй тохиолдолд тэмцээнд оролцох
+                  боломжгүйг анхаарна уу!
+                </Alert>
+              )}
               <Heading content="Багийн мэдээлэл" />
               <Box className="row" {...row}>
                 <Box className="col" {...col}>
@@ -431,18 +441,6 @@ const HackathonTeam = ({
                       disabled={validTeam}
                       options={courseList}
                       contentType="select"
-                    />
-                    <Space />
-                    <FormComponent
-                      label="Сургуулийн нэр:"
-                      name="schoolName"
-                      value={values.schoolName}
-                      onChange={changeSchoolName}
-                      error={errors.schoolName && touched.schoolName}
-                      errorMsg={errors.schoolName}
-                      contentType="select"
-                      disabled={validTeam}
-                      options={schoolData}
                     />
                   </Box>
                 </Box>

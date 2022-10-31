@@ -48,7 +48,7 @@ const UpdateScreen = ({ secTitleWrapper, secText, secHeading, endTime }) => {
           <Text {...secText} content={<div style={{fontFamily: "Georgia", fontSize: "25px", color: "#fff"}}>Sys&CoTech club</div>} />
           <Heading
             {...secHeading}
-            content={<div style={{fontFamily: "MulishBold", color: "#00FF00"}}>"Програмчлалын Олимпиад - 2022" бүртгүүлэх</div>}
+            content={<div style={{fontFamily: "MulishBold", color: "#4464BD"}}>"Програмчлалын Олимпиад - 2022" бүртгүүлэх</div>}
           />
         </Box>
         <Tabs

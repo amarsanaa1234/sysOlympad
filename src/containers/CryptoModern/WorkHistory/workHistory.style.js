@@ -123,6 +123,7 @@ const CounterUpArea = styled.div`
 
     img {
       opacity: 0.2;
+      width: 100px;
     }
 
     &:nth-child(even) {
