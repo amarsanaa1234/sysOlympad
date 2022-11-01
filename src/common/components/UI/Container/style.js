@@ -1,6 +1,10 @@
 import styled, { css } from 'styled-components';
 
 const ContainerWrapper = styled.div`
+ .container {
+  display: flex;
+  justify-content: center;
+ }
   margin-left: auto;
   margin-right: auto;
   ${(props) =>

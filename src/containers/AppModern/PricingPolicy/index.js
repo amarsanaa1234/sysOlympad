@@ -9,7 +9,7 @@ import { pricing } from "common/data/AppModern";
 const PricingPolicy = ({ children }) => {
   return (
     <SectionWrapper id="pricing">
-      <Container>
+      <Container className={"container"}>
         <PricingCard>
           {true && (
             <span style={{ paddingLeft: 10, paddingRight: 10 }} className="tag">
