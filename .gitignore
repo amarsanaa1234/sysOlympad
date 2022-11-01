@@ -104,6 +104,8 @@ public
 
 # Node version
 .node-version
-
+# next.js
+/.next/
+/out/
 # python
 __pycache__/
