@@ -134,9 +134,6 @@ export const MenuArea = styled.div`
       &:hover {
         box-shadow: rgba(75, 109, 235, 0.78) 0px 12px 24px -10px;
       }
-      @media only screen and (max-width: 991px) {
-        display: none;
-      }
     }
     &.menubar {
       display: none;

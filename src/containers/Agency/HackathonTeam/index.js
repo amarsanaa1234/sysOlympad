@@ -14,7 +14,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Alert from "common/components/Alert";
 import { db } from "plugins/firebase";
 import { child, get } from "firebase/database";
-import axios from "../../Agency/axios-orders"
+// import axios from "../../Agency/axios-orders";
 
 const HackathonTeamSchema = Yup.object().shape({
   firstname: Yup.string()
@@ -23,12 +23,12 @@ const HackathonTeamSchema = Yup.object().shape({
   lastname: Yup.string()
     .min(2, "Оролцогчийн овог хоосон байна!")
     .required("Заавал оруулах"),
-  studentCode: Yup.string()
+    studentCode: Yup.string()
     .required("Заавал оруулах")
     .test("student-code", "Оюутаны код буруу байна!", (value) => {
       return schoolValidation(value);
     }),
-  class: Yup.string()
+  className: Yup.string()
     .min(2, "Суралцаж буй мэргэжил ээ бичнэ үү!!")
     .required("Заавал оруулах"),
   course: Yup.string().required("Заавал оруулах"),
@@ -140,7 +140,7 @@ export const FormComponent = ({
             </Option>
           ))}
         </Select>
-      ) : (
+      ) :  (
         <Select
           name={name}
           value={value}
@@ -161,12 +161,11 @@ export const FormComponent = ({
 const courseList = ["1", "2", "3", "4"];
 
 const schoolValidation = (value) => {
-  switch (value) {
-    case "studentCode":
-      // B180930008
-      return /^[Bb]{1}[1-2]{1}[0-9]{8}$/.test(value);
+  if (value) {
+    return /^[Bb]{1}[1-2]{1}[0-9]{8}$/.test(value);
+  }else {
+    return console.log("bhgui")
   }
-  
 };
 
 const HackathonTeam = ({
@@ -179,68 +178,64 @@ const HackathonTeam = ({
   registerSuccess = true,
 }) => {
   const [forms, setForms] = useState([]);
-  const [studentCode, setStudentCode] = useState();
-  const [phoneNumber, setPhoneNumber] = useState();
-  const [email, setEmail] = useState();
-  const [firstname, setFirstName] = useState();
-  const [className, setClassNames] = useState();
-  const [lastname, setLastname] = useState();
-  const [course, setCourse] = useState();
+  // const [phoneNumber, setPhoneNumber] = useState();
+  // const [email, setEmail] = useState();
+  // const [firstname, setFirstName] = useState();
+  // const [className, setClassNames] = useState();
+  // const [lastname, setLastname] = useState();
+  // const [course, setCourse] = useState();
 
-  const changeName = (e) => {
-    setFirstName(e.target.value);
-  };
+  // const changeName = (e) => {
+  //   setFirstName(e.target.value);
+  // };
 
-  const changeStudentCode = (e) => {
-    setStudentCode(e.target.value);
-  };
+  // const changeStudentCode = (e) => {
+  //   setStudentCode(e.target.value);
+  // };
 
-  const changeClassName = (e) => {
-    setClassNames(e.target.value);
-  };
+  // const changeClassName = (e) => {
+  //   setClassNames(e.target.value);
+  // };
 
-  const changePhoneNumber = (e) => {
-    setPhoneNumber(e.target.value);
-  };
-  const changeEmail = (e) => {
-    setEmail(e.target.value);
-  };
-  const changeCourse = (e) => {
-    setCourse(e.target.value);
-  };
+  // const changePhoneNumber = (e) => {
+  //   setPhoneNumber(e.target.value);
+  // };
+  // const changeEmail = (e) => {
+  //   setEmail(e.target.value);
+  // };
+  // const changeCourse = (e) => {
+  //   setCourse(e.target.value);
+  // };
 
-  const changeLastName = (e) => {
-    setLastname(e.target.value);
-  };
+  // const changeLastName = (e) => {
+  //   setLastname(e.target.value);
+  // };
 
   const initialValues = {
-    firstname,
-    email,
-    phoneNumber,
-    className,
+    firstname: "",
+    email: "",
+    phoneNumber: "",
+    className: "",
     course: courseList[0],
-    studentCode,
-    lastname,
+    studentCode: "",
+    lastname: "",
   };
-  
 
   // console.log('createUserForm',createUserForm)
   const createUserForm = () => {
-    console.log("bn");
-    axios
-    .post("/Medeelel.json", initialValues)
-    .then((response) => {
-      alert("order amjilttai");
-    })
-    .catch((error) => {
-      console.log("order amjiltgui:" + error);
-    })
-    .finally(() => {
-      console.log("end");
-    });
+    // console.log("bn");
+    // axios
+    //   .post("/Medeelel.json", initialValues)
+    //   .then((response) => {
+    //     alert("order amjilttai");
+    //   })
+    //   .catch((error) => {
+    //     console.log("order amjiltgui:" + error);
+    //   })
+    //   .finally(() => {
+    //     console.log("end");
+    //   });
   };
-
-  const submitBtnDisaled = forms.length === 1;
 
   const teamRegister = async (data) => {
     toast.promise(
@@ -338,7 +333,6 @@ const HackathonTeam = ({
     );
   };
 
-
   const handleMe = () => {
     console.log("hi");
 
@@ -363,15 +357,10 @@ const HackathonTeam = ({
         validationSchema={HackathonTeamSchema}
         onSubmit={(values) => createUserForm(values)}
       >
-        {({
-          values,
-          errors,
-          touched,
-          handleSubmit,
-        }) => (
+        {({ values, errors, touched, handleSubmit, handleChange }) => (
           <form onSubmit={handleSubmit}>
             <Box style={{ paddingBottom: 32 }} {...contentWrapper}>
-            {registerSuccess ? (
+              {registerSuccess ? (
                 <Alert
                   style={{
                     borderColor: "#badbcc",
@@ -384,20 +373,7 @@ const HackathonTeam = ({
                   баталгаажих болно. <br /> - Бүртгэлтэй холбоотой асууж
                   тодруулах зүйл гарвал манай сошиал хаягууд руу хандана уу!
                 </Alert>
-              ) : (
-                <Alert
-                  style={{
-                    borderColor: "#ffecb5",
-                    backgroundColor: "#fff3cd",
-                    color: "#664d03",
-                    marginBottom: 30,
-                  }}
-                >
-                  Нэг баг нь 3-5 хүний бүрэлдэхүүнтэй оролцох боломжтой бөгөөд
-                  багийн гишүүний тоо хүрээгүй тохиолдолд тэмцээнд оролцох
-                  боломжгүйг анхаарна уу!
-                </Alert>
-              )}
+              ) : null}
               <Heading content="Багийн мэдээлэл" />
               <Box className="row" {...row}>
                 <Box className="col" {...col}>
@@ -407,7 +383,7 @@ const HackathonTeam = ({
                       name="firstname"
                       value={values.firstname}
                       label="Оролцогчийн нэр: "
-                      onChange={changeName}
+                      onChange={handleChange}
                       error={errors.firstname && touched.firstname}
                       errorMsg={errors.firstname}
                       disabled={validTeam}
@@ -416,26 +392,26 @@ const HackathonTeam = ({
                       name="lastname"
                       value={values.lastname}
                       label="Оролцогчийн овог: "
-                      onChange={changeLastName}
+                      onChange={handleChange}
                       error={errors.lastname && touched.lastname}
                       errorMsg={errors.lastname}
                       disabled={validTeam}
                     />
                     <Space />
                     <FormComponent
-                      name="class"
-                      value={values.class}
+                      name="className"
+                      value={values.className}
                       label="Ямар мэргэжлээр суралцдаг вэ:"
-                      onChange={changeClassName}
-                      error={errors.class && touched.class}
-                      errorMsg={errors.class}
+                      onChange={handleChange}
+                      error={errors.className && touched.className}
+                      errorMsg={errors.className}
                       disabled={validTeam}
                     />
                     <FormComponent
                       name="course"
                       value={values.course}
                       label="Курс: "
-                      onChange={changeCourse}
+                      onChange={handleChange}
                       error={errors.course && touched.course}
                       errorMsg={errors.course}
                       disabled={validTeam}
@@ -451,7 +427,7 @@ const HackathonTeam = ({
                       name="studentCode"
                       value={values.studentCode}
                       label="Оюутны код: "
-                      onChange={changeStudentCode}
+                      onChange={handleChange}
                       error={errors.studentCode && touched.studentCode}
                       errorMsg={errors.studentCode}
                       disabled={validTeam}
@@ -462,7 +438,7 @@ const HackathonTeam = ({
                       name="email"
                       type="email"
                       value={values.email}
-                      onChange={changeEmail}
+                      onChange={handleChange}
                       error={errors.email && touched.email}
                       errorMsg={errors.email}
                       disabled={validTeam}
@@ -473,21 +449,22 @@ const HackathonTeam = ({
                       name="phoneNumber"
                       type="number"
                       value={values.phoneNumber}
-                      onChange={changePhoneNumber}
+                      onChange={handleChange}
                       error={errors.phoneNumber && touched.phoneNumber}
                       errorMsg={errors.phoneNumber}
                       disabled={validTeam}
                     />
                   </Box>
-                </Box>{" "}
+                </Box>
                 <Button
                   type="submit"
                   className="default"
                   title="Бүртгүүлэх"
-                  style={{
-                    backgroundColor: !submitBtnDisaled ? "grey" : "green",
-                    borderRadius: 5,
-                  }}
+                  // disabled={!submitBtnDisaled}
+                  // style={{
+                  //   backgroundColor: !submitBtnDisaled ? "grey" : "green",
+                  //   borderRadius: 5,
+                  // }}
                   {...btnStyle}
                   onClick={createUserForm}
                 />

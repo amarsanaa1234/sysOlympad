@@ -14,6 +14,7 @@ import useOnClickOutside from "common/hooks/useOnClickOutside";
 import NavbarWrapper, { MenuArea, MobileMenu, Search } from "./navbar.style";
 import LogoImage from "common/assets/image/cryptoModern/client_logo/syscoLogo.png";
 import LogoImageAlt from "common/assets/image/cryptoModern/client_logo/sysLogoAlt.png";
+import Ptf_converter from 'containers/Agency/Ptf_converter';
 
 import { navbar } from "common/data/CryptoModern";
 
@@ -83,6 +84,21 @@ const Navbar = () => {
     });
   };
 
+  const onButtonClick = () => {
+    // using Java Script method to get PDF file
+    fetch('udirdamj.pdf').then(response => {
+        response.blob().then(blob => {
+            // Creating new object of PDF file
+            const fileURL = window.URL.createObjectURL(blob);
+            // Setting various property values
+            let alink = document.createElement('a');
+            alink.href = fileURL;
+            alink.download = 'udardamj.pdf';
+            alink.click();
+        })
+    })
+}
+
   return (
     <NavbarWrapper className="navbar">
       <Container>
@@ -103,7 +119,7 @@ const Navbar = () => {
         <MenuArea className={state.searchToggle ? "active" : ""}>
           <ScrollSpyMenu className="menu" menuItems={navMenu} offset={-84} />
           {/* end of main menu */}
-
+          <Ptf_converter/>
           <AnchorLink href="#screenshot_section" offset="80">
             <Button className="trail" title="Бүртгүүлэх" />
           </AnchorLink>
@@ -123,6 +139,7 @@ const Navbar = () => {
             variant="textButton"
             onClick={() => toggleHandler("menu")}
           />
+          
         </MenuArea>
       </Container>
 
@@ -147,7 +164,8 @@ const Navbar = () => {
               </li>
             ))}
           </Scrollspy>
-          <Button title="Бүртгүүлэх" />
+        <Button className="button-pdf" onClick={onButtonClick} title="Удирдамж татах">
+        </Button>
         </Container>
       </MobileMenu>
       {/* end of mobile menu */}
