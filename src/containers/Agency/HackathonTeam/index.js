@@ -221,7 +221,6 @@ const HackathonTeam = ({
     lastname: "",
   };
 
-  // console.log('createUserForm',createUserForm)
   const createUserForm = () => {
     // console.log("bn");
     // axios
