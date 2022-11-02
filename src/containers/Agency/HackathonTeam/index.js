@@ -13,8 +13,8 @@ import "react-toastify/dist/ReactToastify.css";
 // import axios from "axios";
 import Alert from "common/components/Alert";
 import { db } from "plugins/firebase";
-import { child, get } from "firebase/database";
-// import axios from "../../Agency/axios-orders";
+import { child, get, getDatabase, ref, set } from "firebase/database";
+import axios from "../../Agency/axios-orders";
 
 const HackathonTeamSchema = Yup.object().shape({
   firstname: Yup.string()
@@ -23,7 +23,7 @@ const HackathonTeamSchema = Yup.object().shape({
   lastname: Yup.string()
     .min(2, "Оролцогчийн овог хоосон байна!")
     .required("Заавал оруулах"),
-    studentCode: Yup.string()
+  studentCode: Yup.string()
     .required("Заавал оруулах")
     .test("student-code", "Оюутаны код буруу байна!", (value) => {
       return schoolValidation(value);
@@ -140,7 +140,7 @@ export const FormComponent = ({
             </Option>
           ))}
         </Select>
-      ) :  (
+      ) : (
         <Select
           name={name}
           value={value}
@@ -163,8 +163,8 @@ const courseList = ["1", "2", "3", "4"];
 const schoolValidation = (value) => {
   if (value) {
     return /^[Bb]{1}[1-2]{1}[0-9]{8}$/.test(value);
-  }else {
-    return console.log("bhgui")
+  } else {
+    return console.log("wrong student code");
   }
 };
 
@@ -178,38 +178,38 @@ const HackathonTeam = ({
   registerSuccess = true,
 }) => {
   const [forms, setForms] = useState([]);
-  // const [phoneNumber, setPhoneNumber] = useState();
-  // const [email, setEmail] = useState();
-  // const [firstname, setFirstName] = useState();
-  // const [className, setClassNames] = useState();
-  // const [lastname, setLastname] = useState();
-  // const [course, setCourse] = useState();
+  const [phoneNumber, setPhoneNumber] = useState();
+  const [email, setEmail] = useState();
+  const [firstname, setFirstName] = useState();
+  const [className, setClassNames] = useState();
+  const [lastname, setLastname] = useState();
+  const [course, setCourse] = useState();
 
-  // const changeName = (e) => {
-  //   setFirstName(e.target.value);
-  // };
+  const changeName = (e) => {
+    setFirstName(e.target.value);
+  };
 
-  // const changeStudentCode = (e) => {
-  //   setStudentCode(e.target.value);
-  // };
+  const changeStudentCode = (e) => {
+    setStudentCode(e.target.value);
+  };
 
-  // const changeClassName = (e) => {
-  //   setClassNames(e.target.value);
-  // };
+  const changeClassName = (e) => {
+    setClassNames(e.target.value);
+  };
 
-  // const changePhoneNumber = (e) => {
-  //   setPhoneNumber(e.target.value);
-  // };
-  // const changeEmail = (e) => {
-  //   setEmail(e.target.value);
-  // };
-  // const changeCourse = (e) => {
-  //   setCourse(e.target.value);
-  // };
+  const changePhoneNumber = (e) => {
+    setPhoneNumber(e.target.value);
+  };
+  const changeEmail = (e) => {
+    setEmail(e.target.value);
+  };
+  const changeCourse = (e) => {
+    setCourse(e.target.value);
+  };
 
-  // const changeLastName = (e) => {
-  //   setLastname(e.target.value);
-  // };
+  const changeLastName = (e) => {
+    setLastname(e.target.value);
+  };
 
   const initialValues = {
     firstname: "",
@@ -221,6 +221,7 @@ const HackathonTeam = ({
     lastname: "",
   };
 
+<<<<<<< HEAD
   const createUserForm = () => {
     // console.log("bn");
     // axios
@@ -236,23 +237,14 @@ const HackathonTeam = ({
     //   });
   };
 
+=======
+>>>>>>> refs/remotes/origin/main
   const teamRegister = async (data) => {
-    toast.promise(
-      axios.post(
-        "https://syscotech-api.herokuapp.com/api/v1/hackathons/6255f6fbbaf0fa4aebde4072/teams",
-        data,
-        {
-          headers: {
-            "Access-Control-Allow-Headers": "*",
-          },
-        }
-      ),
-      {
+    if ((await checkStudentMail(data)) == -1) {
+      toast.promise(axios.post("/Medeelel.json", data), {
         pending: "Багийн бүртгэл хийгдэж байна... ",
         success: {
           render(data) {
-            const requestData = data.data.data;
-            promises(requestData.data.id);
             return `Амжилттай бүртгэгдлээ. `;
           },
         },
@@ -261,8 +253,10 @@ const HackathonTeam = ({
             return `Бүртгэх үед алдаа гарлаа. `;
           },
         },
-      }
-    );
+      });
+    } else {
+      toast.warn(`${data.email} оюутны мэйл бүртгэлтэй байна.`);
+    }
   };
 
   const checkTeamName = (data) => {
@@ -295,50 +289,17 @@ const HackathonTeam = ({
     );
   };
 
-  const checkStudentCode = (data, id) => {
-    const formData = data;
-    const isSubmit = formData.isSubmit;
-    toast.promise(
-      axios.post(
-        "https://syscotech-api.herokuapp.com/api/v1/hackathonusers/check",
-        data,
-        {
-          headers: {
-            "Access-Control-Allow-Headers": "*",
-          },
-        }
-      ),
-      {
-        pending: `Оролцогч #${id} мэдээллийг шалгаж байна... `,
-        success: {
-          render(data) {
-            if (isSubmit) {
-              setLastUser(false);
-            }
-            const index = rolesData.indexOf(formData.role);
-            rolesData.splice(index, 1);
-            setRolesData([...rolesData]);
-            forms.push(formData);
-            setForms([...forms]);
-            return `Оролцогч ${id}-ийг бүртгэх боломжтой.`;
-          },
-        },
-        error: {
-          render(data) {
-            return `${formData.studentCode} оюутны код бүртгэлтэй байна.!!!`;
-          },
-        },
-      }
-    );
-  };
+  const checkStudentMail = async (_data) => {
+    let res = [];
 
-  const handleMe = () => {
-    console.log("hi");
-
-    get(child(db, `Medeelel/-NF0DNu9eOtaRFX-Fceo`))
+    await get(child(db, "Medeelel"))
       .then((snapshot) => {
         if (snapshot.exists()) {
-          console.log(snapshot.val());
+          let data = snapshot.val();
+          res = Object.keys(data)
+            .map((key) => data[key])
+            .filter((el) => el.email)
+            .map((el) => el.email);
         } else {
           console.log("No data available");
         }
@@ -346,15 +307,32 @@ const HackathonTeam = ({
       .catch((error) => {
         console.error(error);
       });
+    // toast.promise({
+    //   pending: `Оролцогч #${_data.firstname} мэдээллийг шалгаж байна... `,
+    //   success: {
+    //     render(data) {
+    //       console.error(data);
+
+    //       return `Оролцогч ${_data.firstname}-ийг бүртгэх боломжтой.`;
+    //     },
+    //   },
+    //   error: {
+    //     render(data) {
+    //       console.error(_data);
+
+    //       return `${_data.email} оюутны мэйл бүртгэлтэй байна.!!!`;
+    //     },
+    //   },
+    // });
+    return res.length ? res.indexOf(_data.email) : -1;
   };
 
   return (
     <LoginModalWrapper>
-      <button onClick={handleMe}> nmg darrrrr </button>
       <Formik
         initialValues={initialValues}
         validationSchema={HackathonTeamSchema}
-        onSubmit={(values) => createUserForm(values)}
+        onSubmit={(values) => teamRegister(values)}
       >
         {({ values, errors, touched, handleSubmit, handleChange }) => (
           <form onSubmit={handleSubmit}>
@@ -465,7 +443,6 @@ const HackathonTeam = ({
                   //   borderRadius: 5,
                   // }}
                   {...btnStyle}
-                  onClick={createUserForm}
                 />
               </Box>
             </Box>
