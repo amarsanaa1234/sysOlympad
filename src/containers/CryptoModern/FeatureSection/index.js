@@ -33,7 +33,7 @@ const FeatureSection = ({
           <Heading
             content={
               <div style={{ fontFamily: "Roboto", color: "#30D4FE" }}>
-                "Програмчлалын Олимпиад - 2022" тэмцээний ерөнхий ивээн тэтгэгч
+                Тэмцээний ерөнхий ивээн тэтгэгч
                 байгууллага
               </div>
             }

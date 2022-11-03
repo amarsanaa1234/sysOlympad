@@ -111,12 +111,12 @@ const CountDownSection = ({ deadline, endTime }) => {
                 <AnchorLink href="#screenshot_section" offset="80">
                   <Button className="secondary" title="Бүртгүүлэх" />
                 </AnchorLink>
-                <Button
+                {/* <Button
               style={{ marginLeft: 10 }}
               onClick={JuramModalHandle}
               className="primary"
               title="Бүртгэлийн хураамж"
-            />
+            /> */}
               </div>
             </>
           )}

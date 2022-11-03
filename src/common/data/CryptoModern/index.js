@@ -8,7 +8,7 @@ export const navbar = {
   navMenu: [
     {
       id: 1,
-      label: 'Олимпмад',
+      label: 'Олимпиад',
       path: '#home',
       offset: '84',
     },
@@ -158,7 +158,7 @@ export const Footer_Data = [
     menuItems: [
       {
         url: 'https://www.facebook.com/SysAndCoTech',
-        text: 'facebook Page',
+        text: 'Facebook page',
       },
       {
         url: 'tel:+976865509863',

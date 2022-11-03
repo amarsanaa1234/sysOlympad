@@ -26,7 +26,7 @@ const HackathonPayment = ({ contentWrapper }) => {
             }}
           >
             Бүртгэлийн хураамж 6000 төгрөг. Доорх заавраар
-            11:10-ны дотор илгээж бүртгэлээ баталгаажуулна уу.
+            11 сарын 10-ны дотор илгээж бүртгэлээ баталгаажуулна уу.
           </Alert>
           <Wrappper>
             <style jsx>{`
@@ -68,7 +68,7 @@ const HackathonPayment = ({ contentWrapper }) => {
                         mt="-5px"
                         as="h3"
                         fontWeight="500"
-                        content="1235121688"
+                        content="1105456517"
                       />
                     </div>
                     <div

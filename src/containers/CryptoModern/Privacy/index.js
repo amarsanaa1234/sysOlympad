@@ -14,7 +14,7 @@ const PrivacyPortal = () => {
         <ContentWrapper>
           <div className="content">
             <Heading content={<div style={{fontFamily: 'MulishBold'}}>Програмчлалын олимпиад - 2021</div>} />
-            <Text content="Шагналт байрнанд шалгарсан оюутнууд" />
+            <Text content="Шагналт байрт шалгарсан оюутнууд" />
           </div>
           <div className="image">
             <Fade up>

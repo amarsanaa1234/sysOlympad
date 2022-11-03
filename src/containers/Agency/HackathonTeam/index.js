@@ -268,7 +268,7 @@ const HackathonTeam = ({
                   тодруулах зүйл гарвал манай сошиал хаягууд руу хандана уу!
                 </Alert>
               ) : null}
-              <Heading content="Багийн мэдээлэл" />
+              <Heading content="Оролцогчийн мэдээлэл" />
               <Box className="row" {...row}>
                 <Box className="col" {...col}>
                   <Box className="formComponent">

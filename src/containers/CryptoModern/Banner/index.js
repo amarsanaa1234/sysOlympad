@@ -24,7 +24,7 @@ const Banner = () => {
           <Fade up delay={100}>
             <Heading
               as="h1"
-              content={<div style={{fontFamily: "Roboto"}}>Програмчлалын Олимпиад - 2022</div>}
+              content={<div style={{fontFamily: "Roboto"}}>Програмчлалын олимпиад - 2022</div>}
             />
           </Fade>
           <Fade up delay={200}>
