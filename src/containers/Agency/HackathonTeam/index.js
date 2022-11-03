@@ -205,7 +205,7 @@ const HackathonTeam = ({
   const teamRegister = async (data) => {
     if ((await checkStudentMail(data)) == -1) {
       toast.promise(axios.post("/Medeelel.json", data), {
-        pending: "Багийн бүртгэл хийгдэж байна... ",
+        pending: "Оролцогчийн бүртгэл хийгдэж байна... ",
         success: {
           render(data) {
             return `Амжилттай бүртгэгдлээ. `;

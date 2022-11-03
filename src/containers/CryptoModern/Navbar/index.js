@@ -164,7 +164,7 @@ const Navbar = () => {
               </li>
             ))}
           </Scrollspy>
-        <Button className="button-pdf" onClick={onButtonClick} title="Удирдамж татах">
+        <Button className="button-pdf" onClick={onButtonClick} title={<div style={{fontFamily: 'Roboto'}}>Удирдамж татах</div>}>
         </Button>
         </Container>
       </MobileMenu>

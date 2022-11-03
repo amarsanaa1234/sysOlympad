@@ -26,7 +26,7 @@ import LoginModal from "containers/Agency/LoginModal";
 import Bvrtgel from "containers/Agency/Bvrtgel";
 
 // Дуусах хугацаа
-const deadline = moment("2022-11-10");
+const deadline = moment("2022-11-11");
 const today = new Date();
 const endTime = today > deadline;
 
