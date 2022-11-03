@@ -25,8 +25,8 @@ const HackathonPayment = ({ contentWrapper }) => {
               marginBottom: 30,
             }}
           >
-            Бүртгэлийн хураамж багийн гишүүн тус бүр 5000 төгрөг. Доорх заавраар
-            4.21-ны дотор илгээж бүртгэлээ баталгаажуулна уу.
+            Бүртгэлийн хураамж 6000 төгрөг. Доорх заавраар
+            11:10-ны дотор илгээж бүртгэлээ баталгаажуулна уу.
           </Alert>
           <Wrappper>
             <style jsx>{`
@@ -168,7 +168,7 @@ const HackathonPayment = ({ contentWrapper }) => {
                         mt="-5px"
                         as="h3"
                         fontWeight="500"
-                        content="5000₮"
+                        content="6000₮"
                       />
                     </div>
                     <div
@@ -192,7 +192,7 @@ const HackathonPayment = ({ contentWrapper }) => {
                         }}
                       >
                         <CopyToClipboard
-                          text="5000"
+                          text="6000"
                           onCopy={() => toast.success("Хуулагдлаа")}
                         >
                           <Icon
@@ -218,7 +218,7 @@ const HackathonPayment = ({ contentWrapper }) => {
                         mt="-5px"
                         as="h3"
                         fontWeight="500"
-                        content="Багийн нэр, өөрийн нэр, утасны дугаар"
+                        content="Оюутны код, өөрийн нэр, утасны дугаар"
                       />
                     </div>
                   </div>

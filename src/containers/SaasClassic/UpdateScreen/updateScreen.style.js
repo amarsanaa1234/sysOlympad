@@ -42,8 +42,8 @@ const SectionWrapper = styled.section`
         content: '';
         position: absolute;
         width: 100%;
-        height: 1px;
-        background: #e7e8eb;
+        // height: 1px;
+        // background: #e7e8eb;
         display: block;
         left: 0;
         bottom: 0;
@@ -71,9 +71,10 @@ const SectionWrapper = styled.section`
       }
       .rc-tabs-tab {
         font-size: 18px;
-        color: #6f7a87;
+        color: #12517B;
         font-weight: 400;
         min-width: 230px;
+        background: #03103B;
         padding: 0 0 25px 0;
         text-align: center;
         margin-right: 0;
@@ -81,7 +82,7 @@ const SectionWrapper = styled.section`
         display: inline-block;
         float: none;
         &:hover {
-          color: #ff4362;
+          color: #fff;
         }
         &:after {
           content: '';
@@ -96,13 +97,13 @@ const SectionWrapper = styled.section`
           }
         }
         &:after {
-          background: #ff4362;
+          background: #12517B;
           transform: scaleX(0);
           transform-origin: right center 0;
           transition: transform 0.7s cubic-bezier(0.19, 1, 0.22, 1) 0s;
         }
         &.rc-tabs-tab-active {
-          color: #ff4362;
+          color: #fff;
           &:after {
             transform: scaleX(1);
             transform-origin: left center 0;

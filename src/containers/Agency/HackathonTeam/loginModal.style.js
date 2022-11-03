@@ -35,12 +35,20 @@ const LoginModalWrapper = styled.div`
     }
   }
   .reusecore__button {
+    margin-top: 25px;
     background-color: transparent;
     &.default {
-      background-color: ${themeGet("colors.primary", "#10ac84")};
-      transition: all 0.3s ease;
+      border-radius: 4px;
+      background-image: linear-gradient(to right,#4ba1d8,#4464bd 95%);
+      font-weight: 500;
+      text-transform: inherit;
+      padding-left: 13px;
+      padding-right: 13px;
+      min-height: 42px;
+      border:0px;
+      margin-right:10px;
       &:hover {
-        box-shadow: 0px 9px 20px -5px rgba(16, 172, 132, 0.57);
+        box-shadow: rgba(75, 109, 235, 0.78) 0px 12px 24px -10px;
       }
     }
   }

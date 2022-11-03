@@ -177,40 +177,6 @@ const HackathonTeam = ({
   setValidTeam,
   registerSuccess = true,
 }) => {
-  const [forms, setForms] = useState([]);
-  const [phoneNumber, setPhoneNumber] = useState();
-  const [email, setEmail] = useState();
-  const [firstname, setFirstName] = useState();
-  const [className, setClassNames] = useState();
-  const [lastname, setLastname] = useState();
-  const [course, setCourse] = useState();
-
-  const changeName = (e) => {
-    setFirstName(e.target.value);
-  };
-
-  const changeStudentCode = (e) => {
-    setStudentCode(e.target.value);
-  };
-
-  const changeClassName = (e) => {
-    setClassNames(e.target.value);
-  };
-
-  const changePhoneNumber = (e) => {
-    setPhoneNumber(e.target.value);
-  };
-  const changeEmail = (e) => {
-    setEmail(e.target.value);
-  };
-  const changeCourse = (e) => {
-    setCourse(e.target.value);
-  };
-
-  const changeLastName = (e) => {
-    setLastname(e.target.value);
-  };
-
   const initialValues = {
     firstname: "",
     email: "",
@@ -221,7 +187,6 @@ const HackathonTeam = ({
     lastname: "",
   };
 
-<<<<<<< HEAD
   const createUserForm = () => {
     // console.log("bn");
     // axios
@@ -237,8 +202,6 @@ const HackathonTeam = ({
     //   });
   };
 
-=======
->>>>>>> refs/remotes/origin/main
   const teamRegister = async (data) => {
     if ((await checkStudentMail(data)) == -1) {
       toast.promise(axios.post("/Medeelel.json", data), {
@@ -259,36 +222,6 @@ const HackathonTeam = ({
     }
   };
 
-  const checkTeamName = (data) => {
-    const formData = data;
-    toast.promise(
-      axios.post(
-        "https://syscotech-api.herokuapp.com/api/v1/hackathonteams/check",
-        data,
-        {
-          headers: {
-            "Access-Control-Allow-Headers": "*",
-          },
-        }
-      ),
-      {
-        pending: "Багийн мэдээллийг шалгаж байна... ",
-        success: {
-          render(data) {
-            localStorage.setItem("hackathonTeam", JSON.stringify(formData));
-            setValidTeam(true);
-            return "Тэмцээнд бүртгүүлэх боломжтой.";
-          },
-        },
-        error: {
-          render(data) {
-            return `${formData.name} нэртэй баг бүртгэлтэй байна!!!`;
-          },
-        },
-      }
-    );
-  };
-
   const checkStudentMail = async (_data) => {
     let res = [];
 
@@ -307,23 +240,7 @@ const HackathonTeam = ({
       .catch((error) => {
         console.error(error);
       });
-    // toast.promise({
-    //   pending: `Оролцогч #${_data.firstname} мэдээллийг шалгаж байна... `,
-    //   success: {
-    //     render(data) {
-    //       console.error(data);
 
-    //       return `Оролцогч ${_data.firstname}-ийг бүртгэх боломжтой.`;
-    //     },
-    //   },
-    //   error: {
-    //     render(data) {
-    //       console.error(_data);
-
-    //       return `${_data.email} оюутны мэйл бүртгэлтэй байна.!!!`;
-    //     },
-    //   },
-    // });
     return res.length ? res.indexOf(_data.email) : -1;
   };
 

@@ -48,7 +48,7 @@ const UpdateScreen = ({ secTitleWrapper, secText, secHeading, endTime }) => {
           <Text {...secText} content={<div style={{fontFamily: "Georgia", fontSize: "25px", color: "#fff"}}>Sys&CoTech club</div>} />
           <Heading
             {...secHeading}
-            content={<div style={{fontFamily: "MulishBold", color: "#4464BD"}}>"Програмчлалын Олимпиад - 2022" бүртгүүлэх</div>}
+            content={<div style={{fontFamily: "MulishBold", color: "#12517B"}}>"Програмчлалын Олимпиад - 2022" бүртгүүлэх</div>}
           />
         </Box>
         <Tabs
@@ -78,7 +78,7 @@ const UpdateScreen = ({ secTitleWrapper, secText, secHeading, endTime }) => {
                   margin: 30,
                 }}
               >
-                {`"Dev Hackathon Student - 2022" тэмцээний бүртгэл хаагдсан.`}
+                {`"Sys&CoTech Програмчлалын Олимпиад - 2022" тэмцээний бүртгэл хаагдсан.`}
               </Alert>
             ) : (
               <>
